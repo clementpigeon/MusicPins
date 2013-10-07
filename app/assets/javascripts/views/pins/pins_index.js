@@ -4,11 +4,14 @@ MP.Views.PinsIndexView = Backbone.View.extend({
 
   render: function () {
     var that = this;
-    that.$el.html(that.template({
-      pins: that.collection
-    }));
-    console.log(that.collection);
+    that.$el.html(that.template());
+
+    that.collection.each(function(pin){
+      var pinCardView = new MP.Views.PinCardView({ model: pin });
+      that.$el.find('div.feed_container').append(pinCardView.render().$el);
+    });
+
     return that;
-  },
+  }
 
 });

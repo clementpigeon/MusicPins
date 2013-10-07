@@ -11,3 +11,46 @@
  *= require_self
  *= require_tree .
  */
+
+
+.feed_container {
+  background: #E1DFE1;
+  font-family: "Helvetica Neue","Hiragino Kaku Gothic Pro",arial,sans-serif;
+}
+
+.pin-card {
+  margin: 5px;
+  background: white;
+  width: 228px;
+  border: 1px solid #D8D7E0;
+  border-radius: 2px;
+  box-shadow: 0 1px 3px 0 rgba(0,0,0,0.20);
+
+  -webkit-font-smoothing: antialiased;
+  color: #333;
+  font-size: 13px;
+  line-height: 17px;
+  padding: 0;
+  word-wrap: break-word;
+}
+
+.pin-card p {
+  margin: 0;
+  padding: 10px;
+}
+
+.pin-card a {
+  text-decoration: none;
+  color: inherit;
+  font-weight: bold;
+}
+
+.pin-card a:hover {
+  text-decoration: underline;
+}
+
+.pin-card img {
+  width: 228px
+}
+
+
