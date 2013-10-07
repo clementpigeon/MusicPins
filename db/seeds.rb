@@ -10,3 +10,5 @@ User.create({username: "clement", email: "clement75009@yahoo.fr", password: 'cle
 User.create({username: "admin", email: "clementpigeon@gmail.com", password: 'admin'})
 
 Pin.create({song_id:1, user_id:1, text:'first pin', link:'http://www.examiner.com/images/blog/EXID19412/images/white_stripes_live(2).jpg', pin_type:0})
+
+Song.create(band_id: 1, mid:'/m/0g67whh', title:'1901')
