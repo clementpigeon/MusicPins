@@ -20,13 +20,15 @@ class PinsController < ApplicationController
     end
   end
 
+
   def index
     respond_to do |format|
       format.html { render :index }
       format.json do
-        @pins = Pin.find(params[:user_id])
+        @pins = Pin.find_all_by_user_id(params[:user_id])
         render :json => @pins
       end
     end
   end
+
 end
