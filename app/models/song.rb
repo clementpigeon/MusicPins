@@ -7,4 +7,6 @@ class Song < ActiveRecord::Base
 
   validates_uniqueness_of :mid
 
+  belongs_to :band
+
 end
