@@ -3,7 +3,7 @@ class CreatePins < ActiveRecord::Migration
     create_table :pins do |t|
       t.integer :song_id, :null => false
       t.references :user, :null => false
-      t.integer :type, :null => false
+      t.integer :pin_type, :null => false
       t.text :text
       t.string :link
       t.integer :responds_to_id

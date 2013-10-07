@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(:version => 20131007160212) do
   create_table "pins", :force => true do |t|
     t.integer  "song_id",        :null => false
     t.integer  "user_id",        :null => false
-    t.integer  "type",           :null => false
+    t.integer  "pin_type",       :null => false
     t.text     "text"
     t.string   "link"
     t.integer  "responds_to_id"
