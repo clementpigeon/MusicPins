@@ -4,10 +4,8 @@ window.MP = {
   Views: {},
   Routers: {},
   initialize: function() {
-    alert('Hello from Backbone!');
+    console.log('Backbone initialized');
   }
 };
 
-$(document).ready(function(){
-  MP.initialize();
-});
+
