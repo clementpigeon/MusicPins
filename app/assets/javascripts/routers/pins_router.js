@@ -5,12 +5,13 @@ MP.Routers.PinsRouter = Backbone.Router.extend({
 
   initialize: function($rootEl, $topBar){
     this.$rootEl = $rootEl;
-    this.$topBar = $topBar
+    this.$topBar = $topBar;
   },
 
   index: function(){
     var that = this;
-    var pins = new MP.Collections.Pins()
+    var pins = new MP.Collections.Pins();
+
     pins.fetch({
       success: function() {
         var pinsIndexView = new MP.Views.PinsIndexView({
@@ -21,6 +22,7 @@ MP.Routers.PinsRouter = Backbone.Router.extend({
       error: function() {
         console.log("Failed to fetch.");
       }
-    })
+    });
+
   }
 });
