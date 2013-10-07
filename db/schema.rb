@@ -11,7 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131007220144) do
+ActiveRecord::Schema.define(:version => 20131007222009) do
+
+  create_table "bands", :force => true do |t|
+    t.string   "name",        :null => false
+    t.string   "mid",         :null => false
+    t.string   "twitter_id"
+    t.string   "facebook_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "bands", ["mid"], :name => "index_bands_on_mid", :unique => true
 
   create_table "pins", :force => true do |t|
     t.integer  "song_id",        :null => false
