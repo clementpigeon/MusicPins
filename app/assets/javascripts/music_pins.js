@@ -1,4 +1,4 @@
-window.MusicPins = {
+window.MP = {
   Models: {},
   Collections: {},
   Views: {},
@@ -9,5 +9,5 @@ window.MusicPins = {
 };
 
 $(document).ready(function(){
-  MusicPins.initialize();
+  MP.initialize();
 });
