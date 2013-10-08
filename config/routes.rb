@@ -6,6 +6,8 @@ MusicPins::Application.routes.draw do
 
   resources :pins, only: [:show, :create, :destroy, :index]
 
+  resources :songs, only: [:create]
+
   root :to => "pins#index"
 
 end
