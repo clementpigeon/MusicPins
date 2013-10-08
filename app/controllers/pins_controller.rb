@@ -25,9 +25,8 @@ class PinsController < ApplicationController
     respond_to do |format|
       format.html { render :index }
       format.json do
-        # @pins = Pin.find_all_by_user_id(params[:user_id])
-        @pins = Pin.all
-        render :json => @pins
+        @pins = Pin.includes(:song, :band).all
+        render json: @pins.to_json(include: [:band, :song])
       end
     end
   end
