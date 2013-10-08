@@ -12,18 +12,27 @@
  *= require_tree .
  */
 
-
 .feed_container {
   background: #E1DFE1;
   font-family: "Helvetica Neue","Hiragino Kaku Gothic Pro",arial,sans-serif;
+  width: 968px;
+  margin: 0 auto;
+  height: 800px;
+  padding: 6px;
+}
+
+.feed_container .col {
+  height: 100%;
+  width: 230px;
+  float: left;
+  padding: 6px;
 }
 
 .pin-card {
-  margin: 5px;
   background: white;
   width: 228px;
   border: 1px solid #D8D7E0;
-  border-radius: 2px;
+  border-radius: 4px;
   box-shadow: 0 1px 3px 0 rgba(0,0,0,0.20);
 
   -webkit-font-smoothing: antialiased;
@@ -50,7 +59,8 @@
 }
 
 .pin-card img {
-  width: 228px
+  width: 228px;
+  border: 0;
 }
 
 

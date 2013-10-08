@@ -1,17 +1,16 @@
-<article class='pin-card'>
-    <p>
-      <a href='#'>
-        <%= pin.get('user').username %>
-      </a>
-      pinned a photo for
-      <a href='#'>
-        <%= pin.get('song').title %>
-      </a>
-        by
-      <a href='#'>
-        <%= pin.get('band').name %>
-      </a>
-    </p>
-    <img src="<%= pin.escape('link') %>" >
-    <p><%= pin.escape('text') %></p>
-</article>
+<p>
+  <a href='#'>
+    <%= pin.get('user').username %>
+  </a>
+  pinned a photo for
+  <a href='#'>
+    <%= pin.get('song').title %>
+  </a>
+    by
+  <a href='#'>
+    <%= pin.get('band').name %>
+  </a>
+</p>
+<img src="<%= pin.escape('link') %>" >
+<p><%= pin.escape('text') %></p>
+
