@@ -1,3 +1,7 @@
+<script type="application/json" id="bootstrapped_current_user_id">
+  <%= current_user.id.to_json.html_safe %>
+</script>
+
 <div id='topbar'>
   <div id='topbar-wrap'>
     <% if !current_user.nil? %>
