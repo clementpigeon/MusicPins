@@ -16,7 +16,7 @@ body {
   background: #E1DFE1;
 }
 
-#topbar {
+#topbar, #topbar2  {
   background: white;
   width: 100%;
   height: 28px;
