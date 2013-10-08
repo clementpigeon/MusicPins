@@ -23,7 +23,17 @@
 
     <input type="submit" value="Log in">
   </form>
- <br> <br>
-  <p>Don't have a username yet? <%= link_to('Sign up in a minute!', new_user_url) %></p>
+ <br>
+ <% if (flash && !flash[:errors].blank? ) %>
+   <span class='error'><%= flash[:errors] %></span><br>
+ <% else %>
+   <br>
+ <% end %>
+
+ <br>
+ <p>Don't have a username yet? <br>
+   <%= link_to('Sign up in a minute!', new_user_url) %></p>
+
+
 
 </div>

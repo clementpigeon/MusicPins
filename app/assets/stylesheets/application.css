@@ -127,3 +127,8 @@ body {
 .login input {
   margin: 10px auto;
 }
+
+.login .error {
+  font-weight: bold;
+  color: red;
+}
