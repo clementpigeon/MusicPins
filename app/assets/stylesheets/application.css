@@ -8,9 +8,11 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
- *= require_self
  *= require_tree .
+ *= require_self
  */
+
+/*  GENERAL  */
 
 body {
   background: #E1DFE1;
@@ -21,6 +23,13 @@ html {
   /*  ugly fix makes scroll bar always present
       so topbar doesn't move right when adding new pin */
 }
+
+h3 {
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
 
 /*  TOP BAR  */
 
@@ -113,6 +122,17 @@ html {
   border: 0;
 }
 
+/*  ADDING PIN  */
+
+.newPin {
+  background: white;
+  width: 600px;
+  margin: 20px auto;
+  padding: 30px;
+  border-radius: 4px;
+}
+
+
 /*  LOG IN  */
 
 .login {
@@ -124,11 +144,6 @@ html {
   border: 1px solid black;
 }
 
-.login h3 {
-  font-weight: bold;
-  font-size: 18px;
-  margin-bottom: 10px;
-}
 
 .login input {
   margin: 10px auto;

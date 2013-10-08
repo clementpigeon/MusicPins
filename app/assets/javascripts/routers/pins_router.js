@@ -26,8 +26,9 @@ MP.Routers.PinsRouter = Backbone.Router.extend({
   },
 
   newPin: function(){
-    console.log('newPin');
-    this.pinsIndexView.remove();
+    if (this.pinsIndexView) {
+      this.pinsIndexView.remove();
+    }
     this.newPinView = new MP.Views.NewPinView();
     this.$rootEl.html(this.newPinView.render().$el);
   }

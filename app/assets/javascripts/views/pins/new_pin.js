@@ -2,6 +2,7 @@ MP.Views.NewPinView = Backbone.View.extend({
 
   template: JST['pins/new'],
 
+  className: 'newPin',
 
   render: function () {
 
