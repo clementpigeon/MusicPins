@@ -16,7 +16,9 @@ body {
   background: #E1DFE1;
 }
 
-#topbar, #topbar2  {
+/*  TOP BAR  */
+
+#topbar  {
   background: white;
   width: 100%;
   height: 28px;
@@ -25,6 +27,34 @@ body {
   padding: 10px 0;
   margin-bottom: 20px;
 }
+
+#topbar-wrap  {
+  position: relative;
+  width: 954px;
+  margin: 0 auto;
+}
+
+.logged{
+  position: absolute;
+  left: 0;
+  top: -5px;
+  text-align: left;
+}
+
+.logo {
+    font-size: 22px;
+    font-style: italic;
+}
+
+.add-pin{
+    position: absolute;
+    top: 7px;
+    right: 0;
+    font-size: 18px;
+}
+
+
+/*  FEED  */
 
 .feed_container {
   font-family: "Helvetica Neue","Hiragino Kaku Gothic Pro",arial,sans-serif;
