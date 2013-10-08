@@ -25,7 +25,7 @@ class PinsController < ApplicationController
     respond_to do |format|
       format.html { render :index }
       format.json do
-        @pins = Pin.includes(:song, :band, :user).all
+        @pins = Pin.order("created_at ASC").includes(:song, :band, :user).all
         render json: @pins.to_json(include: [:band, :song, :user])
       end
     end
