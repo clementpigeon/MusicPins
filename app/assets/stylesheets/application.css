@@ -16,6 +16,12 @@ body {
   background: #E1DFE1;
 }
 
+html {
+  overflow-y: scroll;
+  /*  ugly fix makes scroll bar always present
+      so topbar doesn't move right when adding new pin */
+}
+
 /*  TOP BAR  */
 
 #topbar  {
