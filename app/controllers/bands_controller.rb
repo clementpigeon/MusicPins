@@ -10,4 +10,9 @@ class BandsController < ApplicationController
     end
   end
 
+  def index
+    @bands = Band.all
+    render json: @bands
+  end
+
 end

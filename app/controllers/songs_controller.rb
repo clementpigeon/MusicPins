@@ -10,4 +10,9 @@ class SongsController < ApplicationController
     end
   end
 
+  def index
+    @songs = Song.all
+    render json: @song
+  end
+
 end
