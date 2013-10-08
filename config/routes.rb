@@ -8,6 +8,8 @@ MusicPins::Application.routes.draw do
 
   resources :songs, only: [:create]
 
+  resources :bands, only: [:create]
+
   root :to => "pins#index"
 
 end
