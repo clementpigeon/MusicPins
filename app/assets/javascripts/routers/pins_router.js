@@ -60,9 +60,21 @@ MP.Routers.PinsRouter = Backbone.Router.extend({
   },
 
   pinFocus: function(pin_id){
-    var pin = this.pins.get(pin_id);
-    this.pinFocusView = new MP.Views.PinFocusView({model: pin});
-    this.$rootEl.append(this.pinFocusView.render().$el);
+    if (!this.pins) {
+      var that = this;
+      var pin = new MP.Models.Pin({id: pin_id});
+      pin.fetch({
+        success: function(){
+          that.pinFocusView = new MP.Views.PinFocusView({model: pin});
+          that.$rootEl.append(that.pinFocusView.render().$el);
+        }
+      });
+    }
+    else {
+      var pin = this.pins.get(pin_id);
+      this.pinFocusView = new MP.Views.PinFocusView({model: pin});
+      this.$rootEl.append(this.pinFocusView.render().$el);
+    }
   }
 
 });
