@@ -1,7 +1,10 @@
 MP.Routers.PinsRouter = Backbone.Router.extend({
   routes: {
     '': "index",
-    'new': 'newPin'
+    'new': 'newPin',
+    'user/:user_id': 'user_feed',
+    'song/:song_id': 'song_feed',
+    'band/:band_id': 'band_feed'
   },
 
   initialize: function($rootEl, $topBar){
@@ -9,12 +12,14 @@ MP.Routers.PinsRouter = Backbone.Router.extend({
     this.$topBar = $topBar;
   },
 
-  index: function(){
+  index: function(data){
     var that = this;
     var pins = new MP.Collections.Pins();
 
     pins.fetch({
+      data: data,
       success: function() {
+        console.log(pins);
         that.pinsIndexView = new MP.Views.PinsIndexView({ collection: pins });
         that.$rootEl.html(that.pinsIndexView.render().$el);
       },
@@ -23,6 +28,21 @@ MP.Routers.PinsRouter = Backbone.Router.extend({
       }
     });
 
+  },
+
+  user_feed: function(user_id){
+    var data = {user_id: user_id};
+    this.index(data);
+  },
+
+  song_feed: function(song_id){
+    var data = {song_id: song_id};
+    this.index(data);
+  },
+
+  band_feed: function(band_id){
+    var data = {band_id: band_id};
+    this.index(data);
   },
 
   newPin: function(){
