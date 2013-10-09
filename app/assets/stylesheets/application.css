@@ -9,6 +9,7 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_tree .
+ *= require jquery.ui.all
  *= require_self
  */
 
@@ -140,6 +141,10 @@ h3 {
   border-radius: 4px;
 }
 
+select#song {
+  width: 300px;
+  -webkit-appearance: menulist-button;
+}
 
 /*  LOG IN  */
 
@@ -161,3 +166,4 @@ h3 {
   font-weight: bold;
   color: red;
 }
+

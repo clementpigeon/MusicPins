@@ -29,7 +29,13 @@ MP.Routers.PinsRouter = Backbone.Router.extend({
     if (this.pinsIndexView) {
       this.pinsIndexView.remove();
     }
-    this.newPinSongSelectView = new MP.Views.NewPinSongSelectView();
-    this.$rootEl.html(this.newPinSongSelectView.render().$el);
+    this.newPinFreebaseSongSelectView = new MP.Views.NewPinFreebaseSongSelectView(this);
+    this.$rootEl.html(this.newPinFreebaseSongSelectView.render().$el);
+  },
+
+  addSavePinView: function(){
+    this.newPinSavePinView = new MP.Views.NewPinSavePinView();
+    this.newPinFreebaseSongSelectView.$el.append(this.newPinSavePinView.render(this.newPinFreebaseSongSelectView).$el);
   }
+
 });

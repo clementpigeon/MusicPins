@@ -2,26 +2,26 @@ MP.Views.NewPinSavePinView = Backbone.View.extend({
 
   template: JST['pins/new_pin_save_pin'],
 
-  render: function () {
+  // initialize: function(newPinFreebaseSongSelectView){
+  //   this.newPinFreebaseSongSelectView = newPinFreebaseSongSelectView;
+  // },
 
-    var that = this;
-    that.$el.html(that.template());
-
-    return that;
+  render: function (newPinFreebaseSongSelectView) {
+    this.newPinFreebaseSongSelectView = newPinFreebaseSongSelectView;
+    this.$el.append(this.template());
+    return this;
   },
 
   events: {
-    'click button.pinSubmit' : 'createPin'
+    'submit form#createPin' : 'createPin'
   },
-
 
   createPin: function(event){
     event.preventDefault();
     var that = this;
 
-    var formData = $(event.target.form).serializeJSON();
+    var formData = $(event.target).serializeJSON();
     var current_user_id = JSON.parse($("#bootstrapped_current_user_id").html());
-    formData["pin"]["user_id"] = current_user_id;
 
     var newPin = {
       pin : {
@@ -31,10 +31,10 @@ MP.Views.NewPinSavePinView = Backbone.View.extend({
       }
     };
 
-    var band_mid = formData.pin.band_mid;
-    var band_name = formData.pin.band_name;
-    var song_mid = formData.pin.song_mid;
-    var song_title = formData.pin.song_title;
+    var band_mid = this.newPinFreebaseSongSelectView.current_band_mid;
+    var band_name = this.newPinFreebaseSongSelectView.current_band_name;
+    var song_mid = this.newPinFreebaseSongSelectView.song_mid;
+    var song_title = this.newPinFreebaseSongSelectView.song_title;
 
     this.getBandIdOrCreateBand(band_mid, band_name, function(band_id){
 
