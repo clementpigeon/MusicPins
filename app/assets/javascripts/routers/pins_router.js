@@ -29,7 +29,7 @@ MP.Routers.PinsRouter = Backbone.Router.extend({
     if (this.pinsIndexView) {
       this.pinsIndexView.remove();
     }
-    this.newPinView = new MP.Views.NewPinView();
-    this.$rootEl.html(this.newPinView.render().$el);
+    this.newPinSongSelectView = new MP.Views.NewPinSongSelectView();
+    this.$rootEl.html(this.newPinSongSelectView.render().$el);
   }
 });
