@@ -139,11 +139,25 @@ h3 {
   margin: 20px auto;
   padding: 30px;
   border-radius: 4px;
+  font-family: Verdana,Arial,sans-serif;
+  font-size: 17px;
 }
 
 select#song {
   width: 300px;
   -webkit-appearance: menulist-button;
+}
+
+.ui-widget {
+  font-family: Verdana,Arial,sans-serif;
+  font-size: 1em;
+}
+
+/*  mimic jQuery UI css  */
+
+.newPin input, .newPin select, .newPin textarea, .newPin button {
+  font-family: Verdana,Arial,sans-serif;
+  font-size: 1em;
 }
 
 /*  LOG IN  */

@@ -21,7 +21,7 @@ MP.Views.NewPinFreebaseSongSelectView = Backbone.View.extend({
     'keyup input#song_letters': 'new_letter_callback',
     'click button#songSelected': function(e){
       this.songValue(e),
-      this.displayValues(e),
+      // this.displayValues(e),
       this.songSelected(e)
     }
 
@@ -29,10 +29,10 @@ MP.Views.NewPinFreebaseSongSelectView = Backbone.View.extend({
 
   songSelected: function(e){
     e.preventDefault();
-    // e.currentTarget.remove();
-    console.log(this);
+    e.currentTarget.remove();
     this.router.addSavePinView();
-    // router.newPinSavePinView = new MP.Views.NewPinSavePinView(this);
+
+    // this.newPinSavePinView = new MP.Views.NewPinSavePinView(this);
     // this.$el.append(this.newPinSavePinView.render().$el);
 
   },
@@ -100,7 +100,6 @@ MP.Views.NewPinFreebaseSongSelectView = Backbone.View.extend({
   songValue: function(){
     this.song_mid = $('select#song').val();
     this.song_title = $('select#song').find("option[value='" + $("select#song").val() + "']").text();
-    console.log(this.song_mid);
   },
 
   displayValues: function(){
@@ -114,7 +113,6 @@ MP.Views.NewPinFreebaseSongSelectView = Backbone.View.extend({
 
   setupAutoComplete: function(){
     var that = this;
-    console.log('setupAutoComplete');
     this.$el.find('input#band').autocomplete({
       source: function( request, response ) {
         $.ajax({
@@ -149,15 +147,10 @@ MP.Views.NewPinFreebaseSongSelectView = Backbone.View.extend({
       minLength: 2,
       select: function( event, ui ) {
         event.preventDefault();
-
         $(this).val(ui.item.label);
-        console.log("Selected: " + ui.item.label);
-
         that.current_band_mid = ui.item.value;
         that.current_band_name = ui.item.label;
-
         that.displaySongSelectView();
-
       },
 
       focus: function(event, ui) {

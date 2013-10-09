@@ -58,6 +58,7 @@ MP.Views.NewPinSavePinView = Backbone.View.extend({
 
   getBandIdOrCreateBand: function(band_mid, band_name, callback){
     var bands = new MP.Collections.Bands();
+
     bands.fetch({
       success: function(data){
 
