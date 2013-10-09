@@ -2,24 +2,26 @@ MP.Routers.PinsRouter = Backbone.Router.extend({
   routes: {
     '': "index",
     'new': 'newPin',
-    'user/:user_id': 'user_feed',
-    'song/:song_id': 'song_feed',
-    'band/:band_id': 'band_feed'
+    'user/:user_id': 'userFeed',
+    'song/:song_id': 'songFeed',
+    'band/:band_id': 'bandFeed',
+    'pin/:pin_id' : 'pinFocus'
   },
 
   initialize: function($rootEl, $topBar){
     this.$rootEl = $rootEl;
     this.$topBar = $topBar;
+    this.pins = null;
   },
 
   index: function(data){
     var that = this;
-    var pins = new MP.Collections.Pins();
+    this.pins = new MP.Collections.Pins();
 
-    pins.fetch({
+    this.pins.fetch({
       data: data,
       success: function() {
-        that.pinsIndexView = new MP.Views.PinsIndexView({ collection: pins });
+        that.pinsIndexView = new MP.Views.PinsIndexView({ collection: that.pins });
         that.$rootEl.html(that.pinsIndexView.render().$el);
       },
       error: function() {
@@ -29,17 +31,17 @@ MP.Routers.PinsRouter = Backbone.Router.extend({
 
   },
 
-  user_feed: function(user_id){
+  userFeed: function(user_id){
     var data = {user_id: user_id};
     this.index(data);
   },
 
-  song_feed: function(song_id){
+  songFeed: function(song_id){
     var data = {song_id: song_id};
     this.index(data);
   },
 
-  band_feed: function(band_id){
+  bandFeed: function(band_id){
     var data = {band_id: band_id};
     this.index(data);
   },
@@ -55,6 +57,12 @@ MP.Routers.PinsRouter = Backbone.Router.extend({
   addSavePinView: function(){
     this.newPinSavePinView = new MP.Views.NewPinSavePinView();
     this.newPinFreebaseSongSelectView.$el.append(this.newPinSavePinView.render(this.newPinFreebaseSongSelectView).$el);
+  },
+
+  pinFocus: function(pin_id){
+    var pin = this.pins.get(pin_id);
+    this.pinFocusView = new MP.Views.PinFocusView({model: pin});
+    this.$rootEl.append(this.pinFocusView.render().$el);
   }
 
 });

@@ -11,6 +11,6 @@
     <%= pin.get('band').name %>
   </a>
 </p>
-<img src="<%= pin.escape('link') %>" >
+<a href='#/pin/<%= pin.get('id') %>'><img src="<%= pin.escape('link') %>" ></a>
 <p><%= pin.escape('text') %></p>
 

@@ -1,0 +1,24 @@
+<div class='white_overlay'></div>
+
+<div class='focus_container'>
+
+
+  <br>
+  <a href='#/user/<%= pin.get('user').id %>'>
+    <%= pin.get('user').username %>
+  </a>
+  pinned a photo for
+  <a href='#/song/<%= pin.get('song').id %>'>
+    <%= pin.get('song').title %>
+  </a>
+    by
+  <a href='#/band/<%= pin.get('band').id %>'>
+    <%= pin.get('band').name %>
+  </a>
+
+  <img src="<%= pin.escape('link') %>" >
+</p>
+
+<p><%= pin.escape('text') %></p>
+</div>
+
