@@ -107,7 +107,7 @@ h3 {
   width: 228px;
   margin-bottom: 12px;
   border: 1px solid #D8D7E0;
-  border-radius: 4px;
+  border-radius: 5px;
   box-shadow: 0 1px 3px 0 rgba(0,0,0,0.20);
 
   -webkit-font-smoothing: antialiased;
@@ -133,9 +133,37 @@ h3 {
   text-decoration: underline;
 }
 
+.pin-card a.focus_link {
+  font-weight: normal;
+  text-decoration: none;
+  cursor: -webkit-zoom-in;
+  cursor: -moz-zoom-in;
+}
+
 .pin-card img {
   width: 228px;
   border: 0;
+}
+
+.pin-card footer {
+  font-weight: bold;
+  height: 36px;
+  position: relative;
+  border-top: 1px solid #D8D7E0;
+}
+
+.pin-card footer .likes, .pin-card footer .comments_count {
+  position: absolute;
+  top: 10px;
+}
+
+.pin-card footer .likes {
+  left: 16px;
+}
+
+
+.pin-card footer .comments_count {
+  right: 16px;
 }
 
 /*  PIN FOCUS */
@@ -151,6 +179,8 @@ h3 {
 	-moz-opacity: 0.8;
 	opacity:.80;
 	filter: alpha(opacity=80);
+  cursor: -webkit-zoom-out;
+  cursor: -moz-zoom-out;
 }
 
 .focus_container {
@@ -163,7 +193,7 @@ h3 {
   background: white;
   width: 720px;
   border: 1px solid #D8D7E0;
-  border-radius: 4px;
+  border-radius: 5px;
   box-shadow: 0 1px 3px 0 rgba(0,0,0,0.20);
 
   -webkit-font-smoothing: antialiased;
@@ -216,7 +246,7 @@ h3 {
   width: 600px;
   margin: 20px auto;
   padding: 30px;
-  border-radius: 4px;
+  border-radius: 5px;
   font-family: Verdana,Arial,sans-serif;
   font-size: 17px;
 }

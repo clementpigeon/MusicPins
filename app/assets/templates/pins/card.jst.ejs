@@ -11,6 +11,14 @@
     <%= pin.get('band').name %>
   </a>
 </p>
-<a href='#/pin/<%= pin.get('id') %>'><img src="<%= pin.escape('link') %>" ></a>
+<a class='focus_link' href='#/pin/<%= pin.get('id') %>'><img src="<%= pin.escape('link') %>" ></a>
 <p><%= pin.escape('text') %></p>
+<footer>
+  <div class='likes'>&hearts; 3</div>
+  <div class='comments_count'>
+    <a href='#/pin/<%= pin.get('id') %>'>
+      <%= pin.get('comments').length %> comment<%= pin.get('comments').length > 1 ? 's' : '' %>
+    </a>
+  </div>
+</footer>
 
