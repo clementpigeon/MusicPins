@@ -4,9 +4,8 @@ MP.Views.CommentDetailView = Backbone.View.extend({
   className: 'comment',
 
   render: function () {
-    var that = this;
-    that.$el.html(that.template({comment: this.model}));
-    return that;
+    this.$el.html(this.template({comment: this.model}));
+    return this;
   }
 
 });

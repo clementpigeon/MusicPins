@@ -4,7 +4,7 @@ class CommentsController < ApplicationController
     @comment = Comment.new(params[:comment])
 
     if @comment.save
-      render json: @comment
+      render json: @comment.to_json(include: :user)
     else
       render json: @comment.errors.full_messages, status: 422
     end
@@ -12,9 +12,9 @@ class CommentsController < ApplicationController
 
 
   def show
-    @comment = Comment.find(params[:id])
+    @comment = Comment.includes(:user).find(params[:id])
     if @comment
-      render json: @comment
+      render json: @comment.to_json(include: :user)
     else
       render status: 422, json: nil
     end
