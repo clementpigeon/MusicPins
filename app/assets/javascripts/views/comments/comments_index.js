@@ -23,7 +23,7 @@ MP.Views.CommentsIndexView = Backbone.View.extend({
 
   remove: function(model){
     var viewToRemove = _(this._commentsViews).select(function(commentsView){
-      return commentsView.model === model
+      return commentsView.model === model;
     })[0];
     this._commentsViews = _(this._commentsViews).without(viewToRemove);
 
@@ -37,39 +37,14 @@ MP.Views.CommentsIndexView = Backbone.View.extend({
     that.$el.html(that.template());
     this._rendered = true;
 
-
-
     _(this._commentsViews).each(function(commentsView){
       that.$el.find('.all_comments').append(commentsView.render().$el);
     });
 
     var commentNewView = new MP.Views.CommentNewView(this.collection);
-    // console.log(commentNewView.render().$el);
     this.$el.find('.new_comment').append(commentNewView.render().$el);
 
     return this;
-
   }
-
-
-
-
-  // render: function () {
-  //   var commentsIndexView = this;
-  //   // that.$el.html(that.template());
-  //   console.log(commentsIndexView.collection);
-  //
-  //   commentsIndexView.collection.each(function(comment){
-  //     var commentDetailView = new MP.Views.CommentDetailView({ model: comment });
-  //     commentsIndexView.$el.append(commentDetailView.render().$el);
-  //   });
-  //
-  //   var commentNewView = new MP.Views.CommentNewView(this.collection);
-  //   console.log(commentNewView.render().$el);
-  //   commentsIndexView.$el.append(commentNewView.render().$el);
-  //
-  //   return commentsIndexView;
-  // }
-
 
 });
