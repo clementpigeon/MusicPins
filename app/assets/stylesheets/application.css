@@ -166,6 +166,36 @@ h3 {
   right: 16px;
 }
 
+/* LIKES */
+
+.likes {
+  display: block;
+  position:absolute;
+  top: 30px;
+  right: 30px;
+}
+
+.focus_container .likes {
+  font-size: 18px;
+}
+
+.likes .like, .likes .unlike{
+  cursor: pointer;
+}
+
+.likeDiv .unlike {
+  display: none;
+}
+
+.likeDiv.liked .unlike {
+  display: inline;
+}
+
+.likeDiv.liked .like {
+  display: none;
+}
+
+
 /*  PIN FOCUS */
 
 .white_overlay {
@@ -224,25 +254,7 @@ h3 {
   margin: 20px auto;
 }
 
-.focus_container .likes {
-  display: block;
-  position:absolute;
-  top: 30px;
-  right: 30px;
-  font-size: 18px;
-}
 
-.focus_container .likeDiv .unlike {
-  display: none;
-}
-
-.focus_container .likeDiv.liked .unlike {
-  display: inline;
-}
-
-.focus_container .likeDiv.liked .like {
-  display: none;
-}
 
 .comments {
 

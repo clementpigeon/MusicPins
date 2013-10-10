@@ -6,8 +6,6 @@ MP.Views.PinFocusView = Backbone.View.extend({
 
   events: {
     'click .white_overlay' : 'remove_focus',
-    // 'click .like' : 'like',
-    // 'click .unlike' : 'unlike'
   },
 
   initialize: function(){
@@ -19,13 +17,8 @@ MP.Views.PinFocusView = Backbone.View.extend({
 
     this.$el.html(this.template({ pin: this.model }));
 
-    console.log(this.model.likes);
-
     this.likesView = new MP.Views.LikesView({collection: this.model.likes, pin_id: this.model.get('id')});
     this.$el.find('.likes').append(this.likesView.render().$el);
-
-
-
 
     this.comments = new MP.Collections.Comments(this.model.get('comments'));
     this.commentsIndexView = new MP.Views.CommentsIndexView({collection: this.comments, pin_id: this.model.get('id')});
