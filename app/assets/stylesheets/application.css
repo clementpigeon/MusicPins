@@ -232,15 +232,15 @@ h3 {
   font-size: 18px;
 }
 
-.focus_container .likes .unlike {
+.focus_container .likeDiv .unlike {
   display: none;
 }
 
-.focus_container .likes.liked .unlike {
+.focus_container .likeDiv.liked .unlike {
   display: inline;
 }
 
-.focus_container .likes.liked .like {
+.focus_container .likeDiv.liked .like {
   display: none;
 }
 
