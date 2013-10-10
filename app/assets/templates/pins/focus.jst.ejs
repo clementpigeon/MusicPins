@@ -1,9 +1,7 @@
 <div class='white_overlay'></div>
 
 <div class='focus_container'>
-
-
-  <br>
+  <p>
   <a href='#/user/<%= pin.get('user').id %>'>
     <%= pin.get('user').username %>
   </a>
@@ -15,9 +13,9 @@
   <a href='#/band/<%= pin.get('band').id %>'>
     <%= pin.get('band').name %>
   </a>
+  </p>
 
   <img src="<%= pin.escape('link') %>" >
-</p>
 
 <p><%= pin.escape('text') %></p>
 </div>

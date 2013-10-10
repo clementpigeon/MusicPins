@@ -184,14 +184,14 @@ h3 {
 }
 
 .focus_container {
-  padding: 20px;
   position:absolute;
+  top: 40px;
   left: 50%;
   margin-left: -380px;
-  top: 40px;
-	opacity:1;
-  background: white;
+  padding: 20px;
   width: 720px;
+
+  background: white;
   border: 1px solid #D8D7E0;
   border-radius: 5px;
   box-shadow: 0 1px 3px 0 rgba(0,0,0,0.20);
@@ -201,7 +201,6 @@ h3 {
   font-size: 16px;
   line-height: 17px;
   word-wrap: break-word;
-
 }
 
 .focus_container p {
@@ -226,17 +225,30 @@ h3 {
 }
 
 .comments {
-  border-top: 1px solid #D8D7E0;
-  border-bottom: 1px solid #D8D7E0;
+/*  border-top: 1px solid #D8D7E0;*/
+/*  border-bottom: 1px solid #D8D7E0;*/
 }
 
-.comments {
+.comment {
   border-top: 1px solid #D8D7E0;
-  border-bottom: 1px solid #D8D7E0;
+/*  border-bottom: 1px solid #D8D7E0;*/
 }
 
 .comment_author {
   font-weight: bold;
+}
+
+.comment textarea {
+  font-size: 16px;
+  margin-left: 28px;
+  width: 600px;
+}
+
+.comment button {
+  font-size: 16px;
+  margin-left: 8px;
+  bottom: 8px;
+  position: relative;
 }
 
 /*  ADDING PIN  */
