@@ -12,9 +12,9 @@ class PinsController < ApplicationController
 
 
   def show
-    @pin = Pin.includes(:song, :band, :user, :comments).find(params[:id])
+    @pin = Pin.includes(:song, :band, :user, comments: :user).find(params[:id])
     if @pin
-      render json: @pin.to_json(include: [:band, :song, :user, :comments])
+      render json: @pin.to_json(include: { comments: { include: :user }, band: {}, song: {}, user: {}})
     else
       render status: 422, json: nil
     end
