@@ -15,6 +15,11 @@
   </a>
   </p>
 
+  <div class='likes'>
+    <span class='heart'>&hearts;</span>
+    <%= pin.get('likes').length %>
+  </div>
+
   <img src="<%= pin.escape('link') %>" >
 
 <p><%= pin.escape('text') %></p>

@@ -224,9 +224,15 @@ h3 {
   margin: 20px auto;
 }
 
+.focus_container .likes {
+  position:absolute;
+  top: 30px;
+  right: 30px;
+  font-size: 18px;
+}
+
 .comments {
-/*  border-top: 1px solid #D8D7E0;*/
-/*  border-bottom: 1px solid #D8D7E0;*/
+
 }
 
 .comment {

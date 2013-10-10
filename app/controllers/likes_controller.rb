@@ -6,7 +6,7 @@ class LikesController < ApplicationController
     if @like.save
       render json: @like
     else
-      render json: @comment.errors.full_messages, status: 422
+      render json: @like.errors.full_messages, status: 422
     end
   end
 
@@ -24,6 +24,16 @@ class LikesController < ApplicationController
   def index
     @likes = Like.find_by_pin_id(params[:pin_id])
     render json: @likes.to_json(include: :user)
+  end
+
+  def destroy
+    @like = Like.find_by_id(params[:id])
+
+    if @like.destroy
+      render json: "blah", status: 200
+    else
+      render json: @like.errors, status: 422
+    end
   end
 
 end
