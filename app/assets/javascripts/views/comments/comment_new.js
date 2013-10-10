@@ -4,8 +4,9 @@ MP.Views.CommentNewView = Backbone.View.extend({
 
   className: 'comment',
 
-  initialize: function(collection){
+  initialize: function(collection, pin_id){
     this.collection = collection;
+    this.pin_id = pin_id;
   },
 
   events: {
@@ -25,7 +26,7 @@ MP.Views.CommentNewView = Backbone.View.extend({
       {
         body: body,
         user_id: current_user_id,
-        pin_id: 30
+        pin_id: that.pin_id
       },
       {
         wait: true,

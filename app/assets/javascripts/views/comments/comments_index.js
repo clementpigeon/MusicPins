@@ -41,7 +41,7 @@ MP.Views.CommentsIndexView = Backbone.View.extend({
       that.$el.find('.all_comments').append(commentsView.render().$el);
     });
 
-    var commentNewView = new MP.Views.CommentNewView(this.collection);
+    var commentNewView = new MP.Views.CommentNewView(this.collection, this.options['pin_id']);
     this.$el.find('.new_comment').append(commentNewView.render().$el);
 
     return this;
