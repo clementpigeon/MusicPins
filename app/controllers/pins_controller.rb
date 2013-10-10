@@ -12,9 +12,9 @@ class PinsController < ApplicationController
 
 
   def show
-    @pin = Pin.includes(:song, :band, :user).find(params[:id])
+    @pin = Pin.includes(:song, :band, :user, :comments).find(params[:id])
     if @pin
-      render json: @pin.to_json(include: [:band, :song, :user])
+      render json: @pin.to_json(include: [:band, :song, :user, :comments])
     else
       render status: 422, json: nil
     end
@@ -25,7 +25,7 @@ class PinsController < ApplicationController
     respond_to do |format|
       format.html { render :index }
       format.json do
-        @pins = Pin.order("pins.created_at DESC").includes(:song, :band, :user)
+        @pins = Pin.order("pins.created_at DESC").includes(:song, :band, :user, :comments)
 
         if params[:user_id]
           @pins = @pins.where("user_id = ?", params[:user_id].to_i)
@@ -35,7 +35,7 @@ class PinsController < ApplicationController
           @pins = @pins.where('"songs"."band_id" = ?', params[:band_id].to_i)
         end
 
-        render json: @pins.to_json(include: [:band, :song, :user])
+        render json: @pins.to_json(include: [:band, :song, :user, :comments])
 
       end
     end

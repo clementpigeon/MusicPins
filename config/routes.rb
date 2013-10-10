@@ -10,6 +10,8 @@ MusicPins::Application.routes.draw do
 
   resources :bands, only: [:create, :index]
 
+  resources :comments, only: [:create, :index, :show, :destroy]
+
   root :to => "pins#index"
 
 end

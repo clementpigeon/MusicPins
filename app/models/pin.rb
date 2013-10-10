@@ -4,6 +4,7 @@ class Pin < ActiveRecord::Base
   belongs_to :user
   belongs_to :song
   has_one :band, through: :song
+  has_many :comments
 
   before_validation :default_pin_type
 
