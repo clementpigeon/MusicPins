@@ -195,8 +195,19 @@ h3 {
   margin: 20px auto;
 }
 
+.comments {
+  border-top: 1px solid #D8D7E0;
+  border-bottom: 1px solid #D8D7E0;
+}
 
+.comments {
+  border-top: 1px solid #D8D7E0;
+  border-bottom: 1px solid #D8D7E0;
+}
 
+.comment_author {
+  font-weight: bold;
+}
 
 /*  ADDING PIN  */
 

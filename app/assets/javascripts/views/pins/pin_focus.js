@@ -9,7 +9,14 @@ MP.Views.PinFocusView = Backbone.View.extend({
   },
 
   render: function () {
+
+    this.comments = new MP.Collections.Comments(this.model.get('comments'));
     this.$el.html(this.template({ pin: this.model }));
+
+    if (this.comments.length > 0) {
+      this.commentsIndexView = new MP.Views.CommentsIndexView({collection: this.comments});
+      this.$el.find('.focus_container').append(this.commentsIndexView.render().$el);
+    }
     return this;
   },
 
