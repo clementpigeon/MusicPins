@@ -6,14 +6,24 @@ MP.Views.PinFocusView = Backbone.View.extend({
 
   events: {
     'click .white_overlay' : 'remove_focus',
-    'click .heart' : 'like'
+    'click .like' : 'like',
+    'click .unlike' : 'unlike'
+  },
+
+  initialize: function(){
+    this.model.likes = new MP.Collections.Likes(this.model.get('likes'));
   },
 
   render: function () {
+    var current_user_id = JSON.parse($("#bootstrapped_current_user_id").html());
+
+    console.log(this.model.likes);
 
     this.$el.html(this.template({ pin: this.model }));
 
-    this.likes = new MP.Collections.Likes(this.model.get('likes'));
+    if (this.model.likes.findWhere({user_id: current_user_id})) {
+         this.$el.find('.likes').addClass("liked");
+       }
 
     this.comments = new MP.Collections.Comments(this.model.get('comments'));
     this.commentsIndexView = new MP.Views.CommentsIndexView({collection: this.comments, pin_id: this.model.get('id')});
@@ -31,28 +41,42 @@ MP.Views.PinFocusView = Backbone.View.extend({
       event.preventDefault();
       var current_user_id = JSON.parse($("#bootstrapped_current_user_id").html());
 
-      console.log(this.likes);
-      this.likes.create({
+      console.log(this.model.likes);
+      this.model.likes.create({
         user_id: current_user_id,
         pin_id: that.model.get("id")
-      });
+      },
+      {success: function(){
+        console.log('success');
+        console.log(that.model.likes);
+        that.render();
+      },
+      wait: true
+    }
+    );
 
-      this.$el.find('.likes').addClass("liked");
+      // this.$el.find('.likes').addClass("liked");
     },
 
     unlike: function(event) {
-        var that = this;
-        event.preventDefault();
-        var current_user_id = JSON.parse($("#bootstrapped_current_user_id").html());
+      console.log('clicked unlike');
+      var that = this;
+      event.preventDefault();
+      var current_user_id = JSON.parse($("#bootstrapped_current_user_id").html());
 
-        console.log(this.likes);
-        this.likes.create({
-          user_id: current_user_id,
-          pin_id: that.model.get("id")
-        });
+      console.log(this.model.likes);
+      var likeToDestroy = this.model.likes.findWhere({user_id: current_user_id});
+      likeToDestroy.destroy(
+        {success: function(){
+          console.log('destroy success');
+          console.log(that.model.likes);
+          that.render();
+        } });
 
-        this.find('.likes').addClass("liked");
+      // this.$el.find('.likes').removeClass("liked");
       },
+
+
 
 
 });

@@ -30,7 +30,7 @@ class LikesController < ApplicationController
     @like = Like.find_by_id(params[:id])
 
     if @like.destroy
-      render json: "blah", status: 200
+      render json: nil, status: 200
     else
       render json: @like.errors, status: 422
     end
