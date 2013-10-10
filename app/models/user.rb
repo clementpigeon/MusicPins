@@ -8,6 +8,14 @@ class User < ActiveRecord::Base
   validates :username, :presence => true
   validates :email, :presence => true
 
+  has_many(
+    :made_likes,
+    class_name: 'Like',
+    foreign_key: :user_id,
+    primary_key: :id
+  )
+
+
   after_initialize :ensure_session_token
 
   def self.find_by_credentials(username, password)

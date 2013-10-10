@@ -12,6 +12,8 @@ MusicPins::Application.routes.draw do
 
   resources :comments, only: [:create, :index, :show, :destroy]
 
+  resources :likes, only: [:create, :index, :destroy]
+
   root :to => "pins#index"
 
 end
