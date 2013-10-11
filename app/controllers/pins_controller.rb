@@ -28,7 +28,10 @@ class PinsController < ApplicationController
       format.json do
         @pins = Pin.order("pins.created_at DESC").includes(:song, :band, :likes, :user, comments: :user)
 
-        if params[:user_id]
+        if params[:main_feed]
+          @pins = @pins.where('song_id IN (?) OR "songs"."band_id" IN (?)',
+          current_user.followed_songs_ids, current_user.followed_bands_ids)
+        elsif params[:user_id]
           @pins = @pins.where("user_id = ?", params[:user_id].to_i)
         elsif params[:song_id]
           @pins = @pins.where("song_id = ?", params[:song_id].to_i)

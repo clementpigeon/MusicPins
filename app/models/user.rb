@@ -23,7 +23,15 @@ class User < ActiveRecord::Base
 
   after_initialize :ensure_session_token
 
-  def self.find_by_credentials(username, password)
+  def followed_songs_ids
+    followed_songs.map {|song| song.id }
+  end
+
+  def followed_bands_ids
+    followed_bands.map {|band| band.id }
+  end
+
+    def self.find_by_credentials(username, password)
       user = User.find_by_username(username)
 
       return nil if user.nil?
@@ -53,4 +61,5 @@ class User < ActiveRecord::Base
     def ensure_session_token
       self.session_token ||= self.class.generate_session_token
     end
+
 end

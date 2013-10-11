@@ -5,7 +5,8 @@ MP.Routers.PinsRouter = Backbone.Router.extend({
     'user/:user_id': 'userFeed',
     'song/:song_id': 'songFeed',
     'band/:band_id': 'bandFeed',
-    'pin/:pin_id' : 'pinFocus'
+    'pin/:pin_id' : 'pinFocus',
+    'feed': 'mainFeed'
   },
 
   initialize: function($rootEl, $topBar){
@@ -29,6 +30,11 @@ MP.Routers.PinsRouter = Backbone.Router.extend({
       }
     });
 
+  },
+
+  mainFeed: function(){
+    var data = {main_feed: true};
+    this.index(data);
   },
 
   userFeed: function(user_id){
