@@ -1,2 +1,2 @@
-<p class='comment_author'>Comment by <a href="#/user/<%= comment.get('user').id %>"><%= comment.get('user').username %></a></p>
+<p class='comment_author'>Comment by <a href="#/user/<%= comment.get('user').id %>"><%= comment.get('user').username %></a><span class='delete'><%= this.current_user_is_author() ? 'X' : '' %></span></p>
 <p class='comment_body'><%= comment.escape('body') %></p>

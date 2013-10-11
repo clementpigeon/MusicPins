@@ -106,7 +106,7 @@ MP.Views.NewPinSavePinView = Backbone.View.extend({
 
           }, {
             success: function(data){
-              console.log('Band creation success');
+              console.log('Song creation success');
               callback(data.get('id'));
             }
           })

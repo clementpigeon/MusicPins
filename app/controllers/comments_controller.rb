@@ -26,5 +26,13 @@ class CommentsController < ApplicationController
     render json: @comments
   end
 
+  def destroy
+    @comment = Comment.find_by_id(params[:id])
 
+    if @comment.destroy
+      render json: nil, status: 200
+    else
+      render json: @comment.errors, status: 422
+    end
+  end
 end

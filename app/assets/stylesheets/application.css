@@ -64,15 +64,19 @@ h3 {
 }
 
 .logo {
-    font-size: 22px;
-    font-style: italic;
+  font-size: 22px;
+  font-style: italic;
 }
 
 .add-pin{
-    position: absolute;
-    top: 7px;
-    right: 0;
-    font-size: 18px;
+  position: absolute;
+  top: 2px;
+  right: 0;
+  font: 16px Verdana, Arial, sans-serif;
+  height: 20px;
+  padding: 2px 6px 2px 6px;
+  -webkit-appearance: button;
+
 }
 
 #topbar a, #topbar a:visited {
@@ -183,6 +187,11 @@ h3 {
   cursor: pointer;
 }
 
+.likes .like:hover, .likes .unlike:hover{
+  cursor: pointer;
+  text-decoration: underline;
+}
+
 .likeDiv .unlike {
   display: none;
 }
@@ -254,10 +263,14 @@ h3 {
   margin: 20px auto;
 }
 
-
-
 .comments {
 
+}
+
+.comments .delete{
+  position: absolute;
+  right: 110px;
+  cursor: pointer;
 }
 
 .comment {
@@ -302,6 +315,15 @@ select#song {
 .ui-widget {
   font-family: Verdana,Arial,sans-serif;
   font-size: 1em;
+}
+
+.newPin input {
+ margin-top: 12px;
+}
+
+.newPin #song_letters {
+  width: 150px;
+
 }
 
 /*  mimic jQuery UI css  */
