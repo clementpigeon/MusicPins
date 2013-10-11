@@ -21,11 +21,11 @@ MP.Views.NewPinSavePinView = Backbone.View.extend({
     var that = this;
 
     var formData = $(event.target).serializeJSON();
-    var current_user_id = JSON.parse($("#bootstrapped_current_user_id").html());
+    this.current_user_id = JSON.parse($("#bootstrapped_current_user_id").html());
 
     var newPin = {
       pin : {
-        user_id: current_user_id,
+        user_id: this.current_user_id,
         link: formData["pin"]["link"],
         text: formData["pin"]["text"]
       }
@@ -37,17 +37,20 @@ MP.Views.NewPinSavePinView = Backbone.View.extend({
     var song_title = this.newPinFreebaseSongSelectView.song_title;
 
     this.getBandIdOrCreateBand(band_mid, band_name, function(band_id){
-
+      that.band_id = band_id;
       that.getSongIdOrCreateSong(song_mid, song_title, band_id, function(song_id){
-
+        that.song_id = song_id;
         newPin.pin.song_id = song_id;
         var pin = new MP.Models.Pin(newPin);
         pin.save(null, {
           success: function(pin){
-            console.log('pin creation success!')
+            console.log('Pin creation success');
+            that.createSongFollowing();
+            that.createBandFollowing();
             that.returnToFeed();
           },
           error: function(res){
+            console.log('Pin creation failure');
             console.log(res);
           }
         });
@@ -69,12 +72,12 @@ MP.Views.NewPinSavePinView = Backbone.View.extend({
         }
 
         else {
-          console.log('creating new band')
           bands.create({
             mid: band_mid,
             name: band_name
           }, {
             success: function(data){
+              console.log('Band creation success');
               callback(data.get('id'));
             }
           })
@@ -96,7 +99,6 @@ MP.Views.NewPinSavePinView = Backbone.View.extend({
         }
 
         else {
-          console.log('creating new song')
           songs.create({
             band_id: band_id,
             mid: song_mid,
@@ -104,6 +106,7 @@ MP.Views.NewPinSavePinView = Backbone.View.extend({
 
           }, {
             success: function(data){
+              console.log('Band creation success');
               callback(data.get('id'));
             }
           })
@@ -111,6 +114,51 @@ MP.Views.NewPinSavePinView = Backbone.View.extend({
 
       }
     });
+  },
+
+  createSongFollowing: function(){
+    var that = this;
+    var ajaxOptions = {
+        url: '/song_followings',
+        type: "POST",
+        data: {
+          song_following: {
+            user_id: that.current_user_id,
+            song_id: that.song_id
+
+          }
+        },
+        success: function(data) {
+          console.log('SongFollowing creation success');
+        },
+        failure: function(res){
+          console.log('SongFollowing creation failure');
+          console.log(res);
+        }
+      }
+    $.ajax(ajaxOptions);
+  },
+
+  createBandFollowing: function(){
+    var that = this;
+    var ajaxOptions = {
+        url: '/band_followings',
+        type: "POST",
+        data: {
+          band_following: {
+            user_id: that.current_user_id,
+            band_id: that.band_id
+          }
+        },
+        success: function(data) {
+          console.log('BandFollowing creation success');
+        },
+        failure: function(res){
+          console.log('BandFollowing creation failure');
+          console.log(res);
+        }
+      }
+    $.ajax(ajaxOptions);
   },
 
   returnToFeed: function(){
