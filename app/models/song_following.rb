@@ -5,4 +5,6 @@ class SongFollowing < ActiveRecord::Base
 
   validates :user_id, :song_id, presence: true
 
+  validates :user_id, uniqueness: {scope: :song_id }
+
 end

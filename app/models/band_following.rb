@@ -5,4 +5,6 @@ class BandFollowing < ActiveRecord::Base
 
   validates :user_id, :band_id, presence: true
 
+  validates :user_id, uniqueness: {scope: :band_id }
+
 end
