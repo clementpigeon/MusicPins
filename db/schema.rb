@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131011132002) do
+ActiveRecord::Schema.define(:version => 20131011133449) do
 
   create_table "band_followings", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -68,6 +68,16 @@ ActiveRecord::Schema.define(:version => 20131011132002) do
 
   add_index "pins", ["song_id"], :name => "index_pins_on_song_id"
   add_index "pins", ["user_id"], :name => "index_pins_on_user_id"
+
+  create_table "song_followings", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "song_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "song_followings", ["song_id"], :name => "index_song_followings_on_song_id"
+  add_index "song_followings", ["user_id"], :name => "index_song_followings_on_user_id"
 
   create_table "songs", :force => true do |t|
     t.string   "mid",        :null => false

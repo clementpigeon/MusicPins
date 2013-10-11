@@ -3,4 +3,6 @@ class BandFollowing < ActiveRecord::Base
   belongs_to :user
   belongs_to :band
 
+  validates :user_id, :band_id, presence: true
+
 end

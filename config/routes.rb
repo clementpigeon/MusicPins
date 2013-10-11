@@ -16,6 +16,8 @@ MusicPins::Application.routes.draw do
 
   resources :band_followings, only: [:create, :index, :destroy]
 
+  resources :song_followings, only: [:create, :index, :destroy]
+
   root :to => "pins#index"
 
 end

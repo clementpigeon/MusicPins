@@ -15,6 +15,11 @@ class User < ActiveRecord::Base
     primary_key: :id
   )
 
+  has_many :song_followings
+  has_many :followed_songs, through: :song_followings, source: :song
+
+  has_many :band_followings
+  has_many :followed_bands, through: :band_followings, source: :band
 
   after_initialize :ensure_session_token
 
