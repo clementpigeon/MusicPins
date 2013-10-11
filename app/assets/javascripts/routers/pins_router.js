@@ -1,12 +1,12 @@
 MP.Routers.PinsRouter = Backbone.Router.extend({
   routes: {
-    '': "index",
+    '': "mainFeed",
     'new': 'newPin',
     'user/:user_id': 'userFeed',
     'song/:song_id': 'songFeed',
     'band/:band_id': 'bandFeed',
     'pin/:pin_id' : 'pinFocus',
-    'feed': 'mainFeed'
+    'all': 'index'
   },
 
   initialize: function($rootEl, $topBar){
