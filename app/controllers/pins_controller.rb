@@ -1,4 +1,5 @@
 class PinsController < ApplicationController
+  before_filter :require_current_user!
 
   def create
     @pin = Pin.new(params[:pin])

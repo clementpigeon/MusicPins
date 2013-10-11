@@ -29,6 +29,7 @@ MP.Views.PinFocusView = Backbone.View.extend({
 
   remove_focus: function(){
     this.$el.remove();
+    MP.router.navigate("/", {trigger: false});
   },
 
   // like: function(event) {
