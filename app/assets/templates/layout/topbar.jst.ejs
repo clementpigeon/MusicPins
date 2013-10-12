@@ -1,10 +1,16 @@
-<p>Music Pins</p>
+<ul class='logged'>
+  <li>Logged in as: <%= window.current_user.username %></li>
+  <li>
+    <form action="/session" class="button_to" method="post">
+        <input name="_method" type="hidden" value="delete">
+        <input type="submit" value="Logout">
+    </form>
+  </li>
+</ul>
 
-<% if (CURRENT_USER_ID) { %>
-  Logged in as: <%= CURRENT_USER_USERNAME %>
-  <%= LOG_OUT_BUTTON %>
+<a href='#' class='logo'>Music Pins</a>
 
-<% } %>
+<a class='add-pin' href='/new'>Add a pin</a>
 
 
 

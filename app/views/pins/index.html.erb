@@ -1,20 +1,10 @@
 <script type="application/json" id="bootstrapped_current_user_id">
-  <%= current_user.id.to_json.html_safe %>
+   {
+    "id": <%= current_user.id.to_json.html_safe %>,
+    "username":<%= current_user.username.to_json.html_safe %>}
 </script>
 
 <div id='topbar'>
-  <div id='topbar-wrap'>
-    <% if !current_user.nil? %>
-      <ul class='logged'>
-        <li>Logged in as: <%= current_user.username %></li>
-        <li><%= button_to "Logout", session_url, :method => :delete %></li>
-      </ul>
-    <% end %>
-
-    <a href='#' class='logo'>Music Pins</a>
-
-    <a class='add-pin' href='#/new'>Add a pin</a>
-  </div>
 </div>
 
 <div id='content'>

@@ -2,7 +2,7 @@ MP.Views.TopBarView = Backbone.View.extend({
 
   template: JST['layout/topbar'],
 
-  tagname: 'div#topbar',
+  className: 'topbar-wrap',
 
   render: function () {
     var that = this;

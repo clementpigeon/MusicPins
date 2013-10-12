@@ -53,7 +53,7 @@ h3 {
   z-index: 1000;
 }
 
-#topbar-wrap  {
+.topbar-wrap  {
   position: relative;
   width: 954px;
   margin: 0 auto;
