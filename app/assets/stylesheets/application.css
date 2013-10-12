@@ -225,6 +225,13 @@ input.log-out-link:hover {
   right: 30px;
 }
 
+.pin-focus {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+}
+
 .focus_container .likes {
   font-size: 18px;
 }

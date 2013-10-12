@@ -89,6 +89,8 @@ MP.Routers.PinsRouter = Backbone.Router.extend({
     else {
       var pin = this.pins.get(pin_id);
       this.pinFocusView = new MP.Views.PinFocusView({model: pin});
+      var scrollTop = $(window).scrollTop();
+      this.pinFocusView.$el.css('top', scrollTop + 'px');
       this.$rootEl.append(this.pinFocusView.render().$el);
     }
   }
