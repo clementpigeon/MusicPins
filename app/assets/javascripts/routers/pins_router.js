@@ -76,7 +76,9 @@ MP.Routers.PinsRouter = Backbone.Router.extend({
       pin.fetch({
         success: function(){
           that.pinFocusView = new MP.Views.PinFocusView({model: pin});
-          that.$rootEl.append(that.pinFocusView.render().$el);
+          var $rendered = that.pinFocusView.render().$el;
+          $rendered.find('.white_overlay').hide();
+          that.$rootEl.append($rendered);
         }
       });
     }
