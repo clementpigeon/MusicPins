@@ -15,6 +15,8 @@ class User < ActiveRecord::Base
     primary_key: :id
   )
 
+  has_many :pins
+
   has_many :song_followings
   has_many :followed_songs, through: :song_followings, source: :song
 

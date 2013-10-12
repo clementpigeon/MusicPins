@@ -1,7 +1,8 @@
 <div id='user_nav_container'>
   <a><%= window.current_user.username %></a>
   <nav id='user_nav'>
-    <a>My pins</a>
+    <a href='/#/user/<%= window.current_user.id %>'>My pins</a>
+    <a href='/#/all'>All pins</a>
     <a>My bands</a>
     <a>My songs</a>
     <a>My likes</a>

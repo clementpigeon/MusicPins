@@ -127,6 +127,7 @@ input.log-out-link {
   padding: 0 14px 25px;
   height: auto;
   margin: 0;
+  color: black;
 }
 
 input.log-out-link:hover {
