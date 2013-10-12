@@ -1,11 +1,11 @@
 <div id='user_nav_container'>
   <a><%= window.current_user.username %></a>
   <nav id='user_nav'>
-    <a href='/#/user/<%= window.current_user.id %>'>My pins</a>
+    <a href='/#/user/<%= window.current_user.id %>'>Your pins</a>
+    <a href='/#/user/<%= window.current_user.id %>/likes'>Your likes</a>
+    <a>Your songs</a>
+    <a>Your bands</a>
     <a href='/#/all'>All pins</a>
-    <a>My bands</a>
-    <a>My songs</a>
-    <a>My likes</a>
     <form action="/session" class="button_to" method="post">
         <input name="_method" type="hidden" value="delete">
         <input class='log-out-link' type="submit" value="Log out">

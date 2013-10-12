@@ -32,7 +32,12 @@ class PinsController < ApplicationController
           @pins = @pins.where('song_id IN (?) OR "songs"."band_id" IN (?)',
           current_user.followed_songs_ids, current_user.followed_bands_ids)
         elsif params[:user_id]
-          @pins = @pins.where("user_id = ?", params[:user_id].to_i)
+          if params[:likes] == 'true'
+            user = User.find(params[:user_id])
+            @pins = @pins.where('id IN (?)', user.liked_pins_ids)
+          else
+            @pins = @pins.where("user_id = ?", params[:user_id].to_i)
+          end
         elsif params[:song_id]
           @pins = @pins.where("song_id = ?", params[:song_id].to_i)
         elsif params[:band_id]

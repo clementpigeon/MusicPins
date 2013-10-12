@@ -3,6 +3,7 @@ MP.Routers.PinsRouter = Backbone.Router.extend({
     '': "mainFeed",
     'new': 'newPin',
     'user/:user_id': 'userFeed',
+    'user/:user_id/likes': 'likedPinsFeed',
     'song/:song_id': 'songFeed',
     'band/:band_id': 'bandFeed',
     'pin/:pin_id' : 'pinFocus',
@@ -46,7 +47,10 @@ MP.Routers.PinsRouter = Backbone.Router.extend({
   },
 
   userFeed: function(user_id){
-    var data = {user_id: user_id};
+    var data = {
+      user_id: user_id,
+      likes: false
+    };
     this.index(data);
   },
 
@@ -57,6 +61,14 @@ MP.Routers.PinsRouter = Backbone.Router.extend({
 
   bandFeed: function(band_id){
     var data = {band_id: band_id};
+    this.index(data);
+  },
+
+  likedPinsFeed: function(user_id){
+    var data = {
+      likes: true,
+      user_id: user_id
+    };
     this.index(data);
   },
 

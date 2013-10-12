@@ -17,6 +17,9 @@ class User < ActiveRecord::Base
 
   has_many :pins
 
+  has_many :likes
+  has_many :liked_pins, through: :likes, source: :pin
+
   has_many :song_followings
   has_many :followed_songs, through: :song_followings, source: :song
 
@@ -31,6 +34,10 @@ class User < ActiveRecord::Base
 
   def followed_bands_ids
     followed_bands.map {|band| band.id }
+  end
+
+  def liked_pins_ids
+    liked_pins.map {|pin| pin.id }
   end
 
     def self.find_by_credentials(username, password)
