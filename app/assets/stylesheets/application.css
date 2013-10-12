@@ -59,27 +59,9 @@ h3 {
   margin: 0 auto;
 }
 
-.logged{
-  position: absolute;
-  left: 0;
-  top: -5px;
-  text-align: left;
-}
-
 .logo {
   font-size: 22px;
   font-style: italic;
-}
-
-.add-pin{
-  position: absolute;
-  top: 2px;
-  right: 0;
-  font: 16px Verdana, Arial, sans-serif;
-  height: 20px;
-  padding: 2px 6px 2px 6px;
-  -webkit-appearance: button;
-
 }
 
 #topbar a, #topbar a:visited {
@@ -88,6 +70,66 @@ h3 {
 }
 
 #topbar a:hover {
+  text-decoration: underline;
+}
+
+#user_nav_container {
+  position: absolute;
+  top: -2px;
+  left: 0px;
+}
+
+#user_nav_container > a, .add-pin {
+  display:block;
+  border: 1px solid grey;
+  width: 150px;
+  padding: 6px 14px;
+  border-radius: 4px;
+}
+
+.add-pin {
+  position: absolute;
+  top: -2px;
+  right: 0px;
+
+}
+
+#user_nav_container > a:hover {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#user_nav {
+  display: none;
+}
+
+#user_nav_container:hover #user_nav {
+  display: inline;
+}
+
+#user_nav a, input.log-out-link  {
+  display: block;
+  width: 150px;
+  height: 30px;
+  background: #eee;
+  font-weight: bold;
+  color: #777;
+  cursor: pointer;
+  padding: 9px 14px;
+
+}
+
+input.log-out-link {
+  border: none;
+  font-family: inherit;
+  font-size: inherit;
+  box-sizing: inherit;
+  padding: 0 14px 25px;
+  height: auto;
+  margin: 0;
+}
+
+input.log-out-link:hover {
   text-decoration: underline;
 }
 

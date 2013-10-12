@@ -10,7 +10,7 @@ MP.Routers.PinsRouter = Backbone.Router.extend({
   },
 
   initialize: function($rootEl, $topBar){
-    window.current_user = JSON.parse($("#bootstrapped_current_user_id").html());
+    window.current_user = JSON.parse($("#bootstrapped_current_user").html());
     this.$rootEl = $rootEl;
     this.$topBar = $topBar;
     this.topBarView = new MP.Views.TopBarView({  });

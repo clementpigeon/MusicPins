@@ -1,16 +1,20 @@
-<ul class='logged'>
-  <li>Logged in as: <%= window.current_user.username %></li>
-  <li>
+<div id='user_nav_container'>
+  <a><%= window.current_user.username %></a>
+  <nav id='user_nav'>
+    <a>My pins</a>
+    <a>My bands</a>
+    <a>My songs</a>
+    <a>My likes</a>
     <form action="/session" class="button_to" method="post">
         <input name="_method" type="hidden" value="delete">
-        <input type="submit" value="Logout">
+        <input class='log-out-link' type="submit" value="Log out">
     </form>
-  </li>
-</ul>
+  </nav>
+</div>
 
 <a href='#' class='logo'>Music Pins</a>
 
-<a class='add-pin' href='/new'>Add a pin</a>
+<a class='add-pin' href='/#/new'>Add a pin</a>
 
 
 

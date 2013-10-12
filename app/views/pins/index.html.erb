@@ -1,4 +1,8 @@
 <script type="application/json" id="bootstrapped_current_user_id">
+  <%= current_user.id.to_json.html_safe %>
+</script>
+
+<script type="application/json" id="bootstrapped_current_user">
    {
     "id": <%= current_user.id.to_json.html_safe %>,
     "username":<%= current_user.username.to_json.html_safe %>}
