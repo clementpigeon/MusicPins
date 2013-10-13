@@ -274,7 +274,7 @@ input.log-out-link:hover {
   cursor: -moz-zoom-out;
 }
 
-.focus_container {
+.focus_container, .most_popular {
   position:absolute;
 /*  top: 40px;*/
   top: 95px;
@@ -314,6 +314,10 @@ input.log-out-link:hover {
   max-width: 600px;
   display: block;
   margin: 20px auto;
+}
+
+.most_popular li {
+  margin-bottom: 6px;
 }
 
 .comments {

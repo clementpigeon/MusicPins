@@ -4,7 +4,9 @@ MP.Routers.PinsRouter = Backbone.Router.extend({
     'new': 'newPin',
     'user/:user_id': 'userFeed',
     'user/:user_id/likes': 'likedPinsFeed',
+    'song/most_popular': 'mostPopularSongs',
     'song/:song_id': 'songFeed',
+    'band/most_popular': 'mostPopularBands',
     'band/:band_id': 'bandFeed',
     'pin/:pin_id' : 'pinFocus',
     'all': 'all'
@@ -105,6 +107,30 @@ MP.Routers.PinsRouter = Backbone.Router.extend({
       this.pinFocusView.$el.css('top', scrollTop + 'px');
       this.$rootEl.append(this.pinFocusView.render().$el);
     }
+  },
+
+  mostPopularBands: function(){
+    var that = this;
+    var bands = new MP.Collections.Bands();
+
+    bands.fetch({
+      success: function(data){
+        var popularBandsView = new MP.Views.PopularBandsView({collection: bands});
+        that.$rootEl.html(popularBandsView.render().$el)
+      }
+    });
+  },
+
+  mostPopularSongs: function(){
+    var that = this;
+    var songs = new MP.Collections.Songs();
+
+    songs.fetch({
+      success: function(data){
+        var popularSongsView = new MP.Views.PopularSongsView({collection: songs});
+        that.$rootEl.html(popularSongsView.render().$el)
+      }
+    });
   }
 
 });

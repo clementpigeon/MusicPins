@@ -11,7 +11,7 @@ class SongsController < ApplicationController
   end
 
   def index
-    @songs = Song.all
+    @songs = Song.mostPopular
     render json: @songs
   end
 

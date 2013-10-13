@@ -5,7 +5,13 @@ class Band < ActiveRecord::Base
 
   validates_uniqueness_of :mid
 
-  has_many(:songs, class_name: "Song", foreign_key: :band_id, primary_key: :id)
+  has_many :songs
   has_many :pins, through: :songs, source: :pins
+
+  scope :mostPopular,
+    select('bands.id, bands.name, count(pins.id) AS pins_count')
+    .joins(:pins)
+    .group("bands.id")
+    .order("pins_count DESC")
 
 end
