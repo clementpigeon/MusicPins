@@ -33,23 +33,12 @@ MP.Views.PinsIndexView = Backbone.View.extend({
   },
 
   widthToLayout: function(width){
-    if (width < 510) return [1, 242];
-    if (width < 750) return [2, 484];
-    if (width < 990) return [3, 726];
-    if (width < 1250) return [4, 968];
-    if (width < 1480) return [5, 1210];
-    if (width < 1720) return [6, 1452];
-    return [7, 1694];
+    var colWidth = 240 + 12;
+    var nb = parseInt(width / colWidth);
+    var modulo = width % colWidth;
+    if (modulo < 40) nb--;
+    return [nb, colWidth * nb];
   },
-
-  // not easier to read refactoring
-  //
-  // widthToLayout: function(width){
-  //     var nb = parseInt(width / 242);
-  //     var modulo = width % 242;
-  //     if (modulo < 40) nb--;
-  //     return [nb, 242 * nb];
-  // },
 
   render: function (newLayout) {
     if (!newLayout) newLayout = this.currentLayout;

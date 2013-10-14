@@ -141,12 +141,11 @@ input.log-out-link:hover {
   width: 968px;
   margin: 0 auto;
   min-height: 800px;
-/*  padding: 6px;*/
 }
 
 .feed_container .col {
   height: 100%;
-  width: 230px;
+  width: 240px;
   float: left;
   padding: 6px;
   margin-top: 26px;
@@ -154,7 +153,6 @@ input.log-out-link:hover {
 
 .pin-card {
   background: white;
-  width: 228px;
   margin-bottom: 12px;
   border: 1px solid #D8D7E0;
   border-radius: 5px;
@@ -170,7 +168,7 @@ input.log-out-link:hover {
 
 .pin-card p {
   margin: 0;
-  padding: 10px;
+  padding: 12px;
 }
 
 .pin-card a {
@@ -191,7 +189,7 @@ input.log-out-link:hover {
 }
 
 .pin-card img {
-  width: 228px;
+  width: 238px;
   border: 0;
 }
 
