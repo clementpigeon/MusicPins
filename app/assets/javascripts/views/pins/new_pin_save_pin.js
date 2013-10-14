@@ -67,8 +67,8 @@ MP.Views.NewPinSavePinView = Backbone.View.extend({
           }
         },
         success: function(data, textStatus, jqXHR) {
-          if (jqXHR.status == 200) console.log('Band found')
-          if (jqXHR.status == 201) console.log('Band created')
+          if (jqXHR.status == 200) console.log('Band found');
+          if (jqXHR.status == 201) console.log('Band created');
           callback(data.id);
         },
         error: function(res){
@@ -92,8 +92,8 @@ MP.Views.NewPinSavePinView = Backbone.View.extend({
           }
         },
         success: function(data, textStatus, jqXHR) {
-          if (jqXHR.status == 200) console.log('Song found')
-          if (jqXHR.status == 201) console.log('Song created')
+          if (jqXHR.status == 200) console.log('Song found');
+          if (jqXHR.status == 201) console.log('Song created');
           callback(data.id);
         },
         error: function(res){
@@ -113,14 +113,14 @@ MP.Views.NewPinSavePinView = Backbone.View.extend({
           song_following: {
             user_id: that.current_user_id,
             song_id: that.song_id
-
           }
         },
-        success: function(data) {
-          console.log('SongFollowing creation success');
+        success: function(data, textStatus, jqXHR) {
+          if (jqXHR.status == 200) console.log('SongFollowing found');
+          if (jqXHR.status == 201) console.log('SongFollowing created');
         },
         failure: function(res){
-          console.log('SongFollowing creation failure');
+          console.log('Problem creating a SongFollowing');
           console.log(res);
         }
       }
@@ -138,11 +138,12 @@ MP.Views.NewPinSavePinView = Backbone.View.extend({
             band_id: that.band_id
           }
         },
-        success: function(data) {
-          console.log('BandFollowing creation success');
+        success: function(data, textStatus, jqXHR) {
+          if (jqXHR.status == 200) console.log('BandFollowing found');
+          if (jqXHR.status == 201) console.log('BandFollowing created');
         },
         failure: function(res){
-          console.log('BandFollowing creation failure');
+          console.log('Problem creating a BandFollowing');
           console.log(res);
         }
       }

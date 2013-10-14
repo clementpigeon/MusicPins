@@ -1,12 +1,15 @@
 class BandFollowingsController < ApplicationController
 
   def create
-    @band_following = BandFollowing.new(params[:band_following])
+    if @existing_following = BandFollowing.find_by_band_id(params[:band_following][:band_id])
+      render json: @existing_following, status: 200
 
-    if @band_following.save
-      render json: @band_following
-    else
-      render json: @band_following.errors.full_messages, status: 422
+    else @band_following = BandFollowing.new(params[:band_following])
+      if @band_following.save
+        render json: @band_following, status: 201
+      else
+        render json: @band_following.errors.full_messages, status: 422
+      end
     end
   end
 

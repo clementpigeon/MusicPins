@@ -1,12 +1,14 @@
 class SongFollowingsController < ApplicationController
 
   def create
-    @song_following = SongFollowing.new(params[:song_following])
-
-    if @song_following.save
-      render json: @song_following
-    else
-      render json: @song_following.errors.full_messages, status: 422
+    if @existing_following = SongFollowing.find_by_song_id(params[:song_following][:song_id])
+      render json: @existing_following, status: 200
+    else @song_following = SongFollowing.new(params[:song_following])
+      if @song_following.save
+        render json: @song_following, status: 201
+      else
+        render json: @song_following.errors.full_messages, status: 422
+      end
     end
   end
 
