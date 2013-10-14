@@ -141,7 +141,6 @@ MP.Routers.PinsRouter = Backbone.Router.extend({
     var user = new MP.Models.User({id: user_id});
     user.fetch({
       success: function(data){
-        console.log(user);
         user.set({
           'song_followings': new MP.Collections.SongFollowings(user.get('song_followings'))
         });
@@ -162,10 +161,10 @@ MP.Routers.PinsRouter = Backbone.Router.extend({
     user.fetch({
       success: function(data){
         user.set({
-          'followed_bands': new MP.Collections.Bands(user.get('followed_bands'))
+          'band_followings': new MP.Collections.BandFollowings(user.get('band_followings'))
         });
         var followedBandsView = new MP.Views.FollowedBandsView({
-          collection: user.get('followed_bands')
+          collection: user.get('band_followings')
         });
         that.$rootEl.html(followedBandsView.render().$el)
       },

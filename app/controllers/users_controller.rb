@@ -26,12 +26,12 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
 
       render json: @user.to_json(include:
-        [
+        {
         song_followings:
           {include: { song: { include: :band} } },
         band_followings:
-          { include: :band }
-          ])
+          { include: { band: { include: {} } } }
+          })
     end
   end
 
