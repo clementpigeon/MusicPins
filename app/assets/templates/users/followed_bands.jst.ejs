@@ -1,9 +1,4 @@
-<h3>Following <%= followed_bands.length %> bands:</h3>
+<h3>Following <%= this.collection.length %> bands:</h3>
 <ul>
-<% _(followed_bands.models).each(function(band){ %>
-  <li>
-    <a href='#/band/<%= band.escape('id') %>'>
-      <%= band.escape('name') %></a>
-  </li>
-<% }) %>
+
 </ul>

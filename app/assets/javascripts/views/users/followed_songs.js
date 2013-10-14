@@ -5,7 +5,16 @@ MP.Views.FollowedSongsView = Backbone.View.extend({
   className: 'followed',
 
   render: function () {
-    this.$el.html(this.template({followed_songs: this.collection}));
+    var that = this;
+    this.$el.html(this.template());
+    this.collection.each(function(followed_song){
+      var followedSongsDetailView = new MP.Views.FollowedSongsDetailView({
+        model: followed_song
+      });
+      that.$el.find('ul').append(followedSongsDetailView.render().$el);
+    });
+
     return this;
-  },
+  }
+
 });
