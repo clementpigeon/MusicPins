@@ -1,4 +1,5 @@
-<h3>Following <%= this.collection.length %> bands:</h3>
+<% var count = this.collection.length %>
+<h3>Following <%= count %> <%= count > 1 ? 'bands' : 'band' %>:</h3>
 <ul>
 
 </ul>

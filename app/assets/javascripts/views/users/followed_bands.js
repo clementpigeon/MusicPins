@@ -4,6 +4,10 @@ MP.Views.FollowedBandsView = Backbone.View.extend({
 
   className: 'followed',
 
+  initialize: function(){
+    this.listenTo(this.collection, 'remove', this.render);
+  },
+
   render: function () {
     var that = this;
     this.$el.html(this.template());

@@ -94,6 +94,22 @@ h3 {
 
 }
 
+.followed li {
+  position: relative;
+}
+
+.followed .delete {
+  border: 1px solid grey;
+  display: block;
+  position: absolute;
+  right: 30px;
+  top: 0;
+  border-radius: 4px;
+  padding: 0px 12px;
+  cursor: pointer;
+}
+
+
 #user_nav_container > a:hover {
   text-decoration: none;
   cursor: pointer;
@@ -289,7 +305,7 @@ input.log-out-link:hover {
   -webkit-font-smoothing: antialiased;
   color: #333;
   font-size: 16px;
-  line-height: 17px;
+  line-height: 20px;
   word-wrap: break-word;
 }
 
