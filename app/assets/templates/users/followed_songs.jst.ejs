@@ -1,0 +1,10 @@
+<h3>Following <%= followed_songs.length %> songs:</h3>
+<ul>
+<% _(followed_songs.models).each(function(song){ %>
+  <li>
+    <a href='#/song/<%= song.escape('id') %>'>
+      <%= song.escape('title') %></a>
+       by <%= song.get('band').name %>
+  </li>
+<% }) %>
+</ul>

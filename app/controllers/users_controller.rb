@@ -10,7 +10,7 @@ class UsersController < ApplicationController
       self.current_user = @user
       redirect_to :root
     else
-      render :json => @user.errors.full_messages
+      render json: @user.errors.full_messages
     end
   end
 
@@ -20,9 +20,9 @@ class UsersController < ApplicationController
 
   def show
     if params.include?(:id)
-      @user = User.find(params[:id])
-    else
-      redirect_to user_url(current_user)
+      @user = User.includes(:followed_bands, followed_songs: :band).find(params[:id])
+
+      render json: @user.to_json(include: [:followed_bands, followed_songs: { include: :band }])
     end
   end
 

@@ -272,7 +272,7 @@ input.log-out-link:hover {
   cursor: -moz-zoom-out;
 }
 
-.focus_container, .most_popular {
+.focus_container, .most_popular, .followed {
   position:absolute;
 /*  top: 40px;*/
   top: 95px;
@@ -314,7 +314,7 @@ input.log-out-link:hover {
   margin: 20px auto;
 }
 
-.most_popular li {
+.most_popular li, .followed li {
   margin-bottom: 6px;
 }
 

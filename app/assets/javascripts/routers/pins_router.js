@@ -4,6 +4,7 @@ MP.Routers.PinsRouter = Backbone.Router.extend({
     'new': 'newPin',
     'user/:user_id': 'userFeed',
     'user/:user_id/likes': 'likedPinsFeed',
+    'user/:user_id/followed_songs': 'followedSongs',
     'song/most_popular': 'mostPopularSongs',
     'song/:song_id': 'songFeed',
     'band/most_popular': 'mostPopularBands',
@@ -131,6 +132,28 @@ MP.Routers.PinsRouter = Backbone.Router.extend({
         var popularSongsView = new MP.Views.PopularSongsView({collection: songs});
         that.$rootEl.html(popularSongsView.render().$el)
       }
+    });
+  },
+
+  followedSongs: function(user_id){
+    var that = this;
+    this.user = new MP.Models.User({id: user_id});
+    this.user.fetch({
+      success: function(data){
+        that.user.set({
+          'followed_songs': new MP.Collections.Songs(that.user.get('followed_songs'))
+        });
+        that.user.set({
+          'followed_bands': new MP.Collections.Songs(that.user.get('followed_bands'))
+        });
+        var followedSongsView = new MP.Views.FollowedSongsView({
+          collection: that.user.get('followed_songs')
+        });
+        that.$rootEl.html(followedSongsView.render().$el)
+      },
+      error: function(data, other, yetother){
+        console.log('error');
+      },
     });
   }
 
