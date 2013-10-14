@@ -9,7 +9,7 @@ class Band < ActiveRecord::Base
   has_many :pins, through: :songs, source: :pins
 
   scope :mostPopular,
-    select('bands.id, bands.name, count(pins.id) AS pins_count')
+    select('bands.id, bands.name, bands.mid, count(pins.id) AS pins_count')
     .joins(:pins)
     .group("bands.id")
     .order("pins_count DESC")

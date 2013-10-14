@@ -2,10 +2,6 @@ MP.Views.NewPinSavePinView = Backbone.View.extend({
 
   template: JST['pins/new_pin_save_pin'],
 
-  // initialize: function(newPinFreebaseSongSelectView){
-  //   this.newPinFreebaseSongSelectView = newPinFreebaseSongSelectView;
-  // },
-
   render: function (newPinFreebaseSongSelectView) {
     this.newPinFreebaseSongSelectView = newPinFreebaseSongSelectView;
     this.$el.append(this.template());
@@ -64,7 +60,6 @@ MP.Views.NewPinSavePinView = Backbone.View.extend({
 
     bands.fetch({
       success: function(data){
-
         var foundBand = bands.findWhere({ mid: band_mid });
 
         if (foundBand) {

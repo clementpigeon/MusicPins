@@ -2,7 +2,6 @@
 <ul>
 
 <% _(bands.models).each(function(band){ %>
-<% console.log(band) %>
   <li>
     <a href='#/band/<%= band.escape('id') %>'>
       <%= band.escape('name') %></a>

@@ -29,48 +29,8 @@ MP.Views.PinFocusView = Backbone.View.extend({
 
   remove_focus: function(){
     this.$el.remove();
-    MP.router.navigate("/", {trigger: false});
-  },
-
-  // like: function(event) {
-  //     var that = this;
-  //     event.preventDefault();
-  //     var current_user_id = JSON.parse($("#bootstrapped_current_user_id").html());
-  //
-  //     console.log(this.model.likes);
-  //     this.model.likes.create({
-  //       user_id: current_user_id,
-  //       pin_id: that.model.get("id")
-  //     },
-  //     {success: function(){
-  //       console.log('success');
-  //       console.log(that.model.likes);
-  //       that.render();
-  //     },
-  //     wait: true
-  //   }
-  //   );
-  //   },
-  //
-  //   unlike: function(event) {
-  //     console.log('clicked unlike');
-  //     var that = this;
-  //     event.preventDefault();
-  //     var current_user_id = JSON.parse($("#bootstrapped_current_user_id").html());
-  //
-  //     console.log(this.model.likes);
-  //     var likeToDestroy = this.model.likes.findWhere({user_id: current_user_id});
-  //     likeToDestroy.destroy(
-  //       {success: function(){
-  //         console.log('destroy success');
-  //         console.log(that.model.likes);
-  //         that.render();
-  //       } });
-  //
-  //     },
-
-
-
+    MP.router.navigate("/", {trigger: true});
+  }
 
 });
 

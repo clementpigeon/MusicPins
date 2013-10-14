@@ -10,7 +10,7 @@ class Song < ActiveRecord::Base
   belongs_to :band
 
   scope :mostPopular,
-    select('songs.id, songs.title, songs.band_id, bands.name AS band_name, count(pins.id) AS pins_count')
+    select('songs.id, songs.title, songs.band_id, songs.mid, bands.name AS band_name, count(pins.id) AS pins_count')
     .joins(:pins)
     .group("songs.id, bands.id")
     .joins(:band)

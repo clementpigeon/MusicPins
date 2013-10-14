@@ -1,6 +1,5 @@
 <h3>Most popular songs on Music Pins:</h3>
 <ul>
-<% console.log(songs) %>
 <% _(songs.models).each(function(song){ %>
   <li>
     <a href='#/song/<%= song.escape('id') %>'>
