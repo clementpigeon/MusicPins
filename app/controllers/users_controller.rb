@@ -14,15 +14,24 @@ class UsersController < ApplicationController
     end
   end
 
+
   def new
     @user = User.new
   end
 
+
   def show
     if params.include?(:id)
-      @user = User.includes(:followed_bands, followed_songs: :band).find(params[:id])
+      # @user = User.includes(song_followings: {song: :band}, band_followings: :band).find(params[:id])
+      @user = User.find(params[:id])
 
-      render json: @user.to_json(include: [:followed_bands, followed_songs: { include: :band }])
+      render json: @user.to_json(include:
+        [
+        song_followings:
+          {include: { song: { include: :band} } },
+        band_followings:
+          { include: :band }
+          ])
     end
   end
 

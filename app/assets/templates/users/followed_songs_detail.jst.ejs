@@ -1,3 +1,4 @@
-<a href='#/song/<%= followed_song.escape('id') %>'>
-  <%= followed_song.escape('title') %></a>
-   by <%= followed_song.get('band').name %>
+<a href='#/song/<%= song_following.get('song').id %>'>
+  <%= song_following.get('song').title %></a>
+   by <%= song_following.get('song').band.name %>
+   <a class='delete'>Stop following this song</a>
