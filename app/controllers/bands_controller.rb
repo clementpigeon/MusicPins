@@ -1,12 +1,16 @@
 class BandsController < ApplicationController
 
   def create
-    @band = Band.new(params[:band])
 
-    if @band.save
-      render json: @band
+    if @existing_band = Band.find_by_mid(params[:band][:mid])
+      render json: @existing_band, status: 200
     else
-      render json: @band.errors.full_messages, status: 422
+      @band = Band.new(params[:band])
+      if @band.save
+        render json: @band, status: 201
+      else
+        render json: @band.errors.full_messages, status: 422
+      end
     end
   end
 

@@ -56,59 +56,52 @@ MP.Views.NewPinSavePinView = Backbone.View.extend({
   },
 
   getBandIdOrCreateBand: function(band_mid, band_name, callback){
-    var bands = new MP.Collections.Bands();
-
-    bands.fetch({
-      success: function(data){
-        var foundBand = bands.findWhere({ mid: band_mid });
-
-        if (foundBand) {
-          callback(foundBand.get('id'));
-        }
-
-        else {
-          bands.create({
+    var that = this;
+    var ajaxOptions = {
+        url: '/bands',
+        type: "POST",
+        data: {
+          band: {
             mid: band_mid,
             name: band_name
-          }, {
-            success: function(data){
-              console.log('Band creation success');
-              callback(data.get('id'));
-            }
-          })
+          }
+        },
+        success: function(data, textStatus, jqXHR) {
+          if (jqXHR.status == 200) console.log('Band found')
+          if (jqXHR.status == 201) console.log('Band created')
+          callback(data.id);
+        },
+        error: function(res){
+          console.log('There was a problem in creating the band');
+          console.log(res);
         }
-
       }
-    });
+    $.ajax(ajaxOptions);
   },
 
   getSongIdOrCreateSong: function(song_mid, song_title, band_id, callback){
-    var songs = new MP.Collections.Songs();
-    songs.fetch({
-      success: function(data){
-
-        var foundSong = songs.findWhere({ mid: song_mid });
-
-        if (foundSong) {
-          callback(foundSong.get('id'));
-        }
-
-        else {
-          songs.create({
+    var that = this;
+    var ajaxOptions = {
+        url: '/songs',
+        type: "POST",
+        data: {
+          song: {
             band_id: band_id,
             mid: song_mid,
             title: song_title
-
-          }, {
-            success: function(data){
-              console.log('Song creation success');
-              callback(data.get('id'));
-            }
-          })
+          }
+        },
+        success: function(data, textStatus, jqXHR) {
+          if (jqXHR.status == 200) console.log('Song found')
+          if (jqXHR.status == 201) console.log('Song created')
+          callback(data.id);
+        },
+        error: function(res){
+          console.log('There was a problem in creating the song');
+          console.log(res);
         }
-
       }
-    });
+    $.ajax(ajaxOptions);
   },
 
   createSongFollowing: function(){
