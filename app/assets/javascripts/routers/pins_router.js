@@ -5,6 +5,7 @@ MP.Routers.PinsRouter = Backbone.Router.extend({
     'user/:user_id': 'userFeed',
     'user/:user_id/likes': 'likedPinsFeed',
     'user/:user_id/followed_songs': 'followedSongs',
+    'user/:user_id/followed_bands': 'followedBands',
     'song/most_popular': 'mostPopularSongs',
     'song/:song_id': 'songFeed',
     'band/most_popular': 'mostPopularBands',
@@ -137,17 +138,14 @@ MP.Routers.PinsRouter = Backbone.Router.extend({
 
   followedSongs: function(user_id){
     var that = this;
-    this.user = new MP.Models.User({id: user_id});
-    this.user.fetch({
+    var user = new MP.Models.User({id: user_id});
+    user.fetch({
       success: function(data){
-        that.user.set({
-          'followed_songs': new MP.Collections.Songs(that.user.get('followed_songs'))
-        });
-        that.user.set({
-          'followed_bands': new MP.Collections.Songs(that.user.get('followed_bands'))
+        user.set({
+          'followed_songs': new MP.Collections.Songs(user.get('followed_songs'))
         });
         var followedSongsView = new MP.Views.FollowedSongsView({
-          collection: that.user.get('followed_songs')
+          collection: user.get('followed_songs')
         });
         that.$rootEl.html(followedSongsView.render().$el)
       },
@@ -155,6 +153,26 @@ MP.Routers.PinsRouter = Backbone.Router.extend({
         console.log('error');
       },
     });
-  }
+  },
+
+  followedBands: function(user_id){
+    var that = this;
+    var user = new MP.Models.User({id: user_id});
+    user.fetch({
+      success: function(data){
+        user.set({
+          'followed_bands': new MP.Collections.Bands(user.get('followed_bands'))
+        });
+        var followedBandsView = new MP.Views.FollowedBandsView({
+          collection: user.get('followed_bands')
+        });
+        that.$rootEl.html(followedBandsView.render().$el)
+      },
+      error: function(data, other, yetother){
+        console.log('error');
+      },
+    });
+  },
+
 
 });
