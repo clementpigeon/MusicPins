@@ -375,6 +375,13 @@ input.log-out-link:hover {
   position: relative;
 }
 
+.video_iframe {
+  margin: auto;
+  width: 640px;
+  margin-top: 12px;
+  margin-bottom: 12px;
+}
+
 /*  ADDING PIN  */
 
 .newPin {

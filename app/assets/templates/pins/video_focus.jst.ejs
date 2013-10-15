@@ -1,0 +1,28 @@
+<div class='white_overlay'></div>
+
+<div class='focus_container'>
+  <p>
+  <a href='#/user/<%= pin.get('user').id %>'>
+    <%= pin.get('user').username %>
+  </a>
+  pinned a photo for
+  <a href='#/song/<%= pin.get('song').id %>'>
+    <%= pin.get('song').title %>
+  </a>
+    by
+  <a href='#/band/<%= pin.get('band').id %>'>
+    <%= pin.get('band').name %>
+  </a>
+  </p>
+
+  <div class='likes'>
+  </div>
+
+  <div class='video_iframe'><iframe id="ytplayer" type="text/html" width="640" height="390"
+    src="http://www.youtube.com/embed/<%= pin.get('link').slice(31) %>?autohide=1"
+    frameborder="0"/></div>
+
+
+<p><%= pin.escape('text') %></p>
+</div>
+

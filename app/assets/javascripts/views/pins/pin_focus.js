@@ -1,6 +1,7 @@
 MP.Views.PinFocusView = Backbone.View.extend({
 
   template: JST['pins/focus'],
+  video_template: JST['pins/video_focus'],
 
   className: 'pin-focus',
 
@@ -15,7 +16,13 @@ MP.Views.PinFocusView = Backbone.View.extend({
   render: function () {
     var current_user_id = JSON.parse($("#bootstrapped_current_user_id").html());
 
-    this.$el.html(this.template({ pin: this.model }));
+    if (this.model.get('pin_type') == 1){
+      this.$el.html(this.video_template({ pin: this.model }));
+    }
+    else {
+      this.$el.html(this.template({ pin: this.model }));
+    }
+
 
     this.likesView = new MP.Views.LikesView({collection: this.model.likes, pin_id: this.model.get('id')});
     this.$el.find('.likes').append(this.likesView.render().$el);
