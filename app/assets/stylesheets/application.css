@@ -79,10 +79,19 @@ h3 {
   left: 0px;
 }
 
-#user_nav_container > a, .add-pin, .fb-lookup {
+#user_nav_container > a {
   display:block;
   border: 1px solid grey;
   width: 150px;
+  padding: 6px 14px;
+  border-radius: 4px;
+}
+
+.add-pin, .fb-lookup, .flickr-lookup {
+  display:inline-block;
+  border: 1px solid grey;
+  width: 100px;
+  margin-top: 12px;
   padding: 6px 14px;
   border-radius: 4px;
 }
@@ -426,13 +435,13 @@ select#song {
 }
 
 
-.FacebookPhotosView {
+.PhotosView {
   max-height:245px;
   overflow:scroll;
   overflow-y:auto;
 }
 
-.FacebookLookupView h3 {
+.LookupView h3 {
   margin-top: 10px;
 }
 

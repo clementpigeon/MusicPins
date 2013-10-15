@@ -1,6 +1,6 @@
-MP.Views.FacebookPhotosView = Backbone.View.extend({
+MP.Views.FlickrPhotosView = Backbone.View.extend({
 
-  template: JST['facebook/facebook-photos'],
+  template: JST['facebook/flickr-photos'],
 
   initialize:function(photos, lookupView){
     this.lookupView = lookupView;

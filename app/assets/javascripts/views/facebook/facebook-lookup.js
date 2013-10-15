@@ -55,7 +55,6 @@ MP.Views.FacebookLookupView = Backbone.View.extend({
     js = d.createElement(s); js.id = id;
     js.src = "//connect.facebook.net/en_US/all.js";
     fjs.parentNode.insertBefore(js, fjs);
-    console.log('end of facebook_init');
   },
 
   photosLookup : function(){
