@@ -11,6 +11,7 @@ MP.Routers.PinsRouter = Backbone.Router.extend({
     'band/most_popular': 'mostPopularBands',
     'band/:band_id': 'bandFeed',
     'pin/:pin_id' : 'pinFocus',
+    'facebook': 'facebook_lookup',
     'all': 'all'
   },
 
@@ -174,5 +175,12 @@ MP.Routers.PinsRouter = Backbone.Router.extend({
     });
   },
 
+  facebook_lookup: function(){
+    var that = this;
+
+    var facebookLookupView = new MP.Views.FacebookLookupView();
+    that.$rootEl.html(facebookLookupView.render().$el);
+
+  },
 
 });

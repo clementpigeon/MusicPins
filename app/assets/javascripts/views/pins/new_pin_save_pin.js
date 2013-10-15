@@ -9,7 +9,8 @@ MP.Views.NewPinSavePinView = Backbone.View.extend({
   },
 
   events: {
-    'submit form#createPin' : 'createPin'
+    'submit form#createPin' : 'createPin',
+    'click .fb-lookup' : 'showFacebookPhoto'
   },
 
   createPin: function(event){
@@ -153,6 +154,11 @@ MP.Views.NewPinSavePinView = Backbone.View.extend({
   returnToFeed: function(){
     this.remove();
     MP.router.navigate("/", {trigger: true});
+  },
+
+  showFacebookPhoto: function(){
+    var facebookLookupView = new MP.Views.FacebookLookupView();
+    this.$el.find('.external_photos').html(facebookLookupView.render().$el);
   }
 
 });
