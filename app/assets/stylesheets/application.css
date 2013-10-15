@@ -79,7 +79,7 @@ h3 {
   left: 0px;
 }
 
-#user_nav_container > a {
+#user_nav_container > a, .add-pin {
   display:block;
   border: 1px solid grey;
   width: 150px;
@@ -87,7 +87,7 @@ h3 {
   border-radius: 4px;
 }
 
-.add-pin, .fb-lookup, .flickr-lookup {
+.fb-lookup, .flickr-lookup {
   display:inline-block;
   border: 1px solid grey;
   width: 100px;

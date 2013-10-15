@@ -17,7 +17,6 @@ MP.Views.NewPinSavePinView = Backbone.View.extend({
   createPin: function(event){
     event.preventDefault();
     var that = this;
-
     var formData = $(event.target).serializeJSON();
     this.current_user_id = JSON.parse($("#bootstrapped_current_user_id").html());
 
@@ -25,10 +24,10 @@ MP.Views.NewPinSavePinView = Backbone.View.extend({
       pin : {
         user_id: this.current_user_id,
         link: formData["pin"]["link"],
-        text: formData["pin"]["text"]
+        text: formData["pin"]["text"],
+        pin_type: formData["pin"]["pin_type"]
       }
     };
-
     var band_mid = this.newPinFreebaseSongSelectView.current_band_mid;
     var band_name = this.newPinFreebaseSongSelectView.current_band_name;
     var song_mid = this.newPinFreebaseSongSelectView.song_mid;

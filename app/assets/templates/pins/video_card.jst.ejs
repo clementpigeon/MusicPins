@@ -1,0 +1,29 @@
+<p>
+  <a href='#/user/<%= pin.get('user').id %>'>
+    <%= pin.get('user').username %></a>
+   pinned a video for
+  <a href='#/song/<%= pin.get('song').id %>'>
+    <%= pin.get('song').title %></a>
+     by
+  <a href='#/band/<%= pin.get('band').id %>'>
+    <%= pin.get('band').name %>
+  </a>
+</p>
+
+<iframe id="ytplayer" type="text/html" width="238"
+  src="http://www.youtube.com/embed/<%= pin.get('link').slice(31) %>?controls=0&showinfo=0"
+  frameborder="0"/>
+
+<p><a class='focus_link' href='#/pin/<%= pin.get('id') %>'><%= pin.escape('text') %></a></p>
+<footer>
+  <div class='likes'>
+  </div>
+
+  <!-- <div class='likes'>&hearts; <%= pin.get('likes').length %></div> -->
+  <div class='comments_count'>
+    <a href='#/pin/<%= pin.get('id') %>'>
+      <%= pin.get('comments').length %> comment<%= pin.get('comments').length > 1 ? 's' : '' %>
+    </a>
+  </div>
+</footer>
+
