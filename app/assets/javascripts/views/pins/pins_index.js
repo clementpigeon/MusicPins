@@ -9,6 +9,7 @@ MP.Views.PinsIndexView = Backbone.View.extend({
     this.collection.each(this.addCardViewToArray);
 
     this.currentLayout = this.widthToLayout($('body').width());
+    this.render();
     $(window).on("resize", this.resizedBuffer);
   },
 
@@ -27,9 +28,10 @@ MP.Views.PinsIndexView = Backbone.View.extend({
     var newLayout = this.widthToLayout(newWidth);
 
     if (newLayout[0] !== this.currentLayout[0]){
-      this.render(newLayout);
+      this.currentLayout = newLayout;
+      this.render();
     };
-    this.currentLayout = newLayout;
+
   },
 
   widthToLayout: function(width){
@@ -40,12 +42,13 @@ MP.Views.PinsIndexView = Backbone.View.extend({
     return [nb, colWidth * nb];
   },
 
-  render: function (newLayout) {
-    if (!newLayout) newLayout = this.currentLayout;
+  render: function () {
     var that = this;
     that.$el.html(that.template());
 
-    this.reactiveLayout(newLayout);
+    this.colNumber = this.currentLayout[0];
+    this.$('section.feed_container').width(this.currentLayout[1]);
+
     this.col_index = 0;
 
     _(this._pinCardViews).each(function(pinCardView){
@@ -56,15 +59,25 @@ MP.Views.PinsIndexView = Backbone.View.extend({
     return that;
   },
 
-  reactiveLayout: function(newLayout){
-    this.colNumber = newLayout[0];
-    this.$('section.feed_container').width(newLayout[1]);
-  },
-
   which_col: function(){
-    this.col_index++;
-    if (this.col_index > this.colNumber) this.col_index = 1;
-    return ('col' + this.col_index);
+    var that = this;
+    var smallestCol = 0;
+    var smallest = 99999;
+    var nbCol = this.currentLayout[0];
+
+    var obj = {}   // for debugging
+
+    for (var i = 1; i <= nbCol; i++) {
+      var height = this.$el.find('div.col' + i).height();
+      obj[i] = height;    // for debugging
+      if (height < smallest){
+        smallestCol = i;
+        smallest = height;
+      }
+    }
+    obj['smallest'] = smallestCol;       // for debugging
+    console.log(JSON.stringify(obj));    // for debugging
+    return ('col' + smallestCol);
   },
 
   remove: function() {
@@ -99,10 +112,14 @@ MP.Views.PinsIndexView = Backbone.View.extend({
       var pinCardView = new MP.Views.PinCardView({ model: newPin });
       var renderedCard = pinCardView.render().$el;
       that._pinCardViews.push(renderedCard);
-      var colDiv = 'div.' + that.which_col();
-      that.$el.find(colDiv).append(renderedCard);
-      that.listenForScroll();
-    })
+      var time = 200;
+      setTimeout(function () {
+        var colDiv = 'div.' + that.which_col();
+        that.$el.find(colDiv).append(renderedCard);
+              }, time);
+        time += 200;
+    });
+    that.listenForScroll();
   }
 
 
