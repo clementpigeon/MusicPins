@@ -11,6 +11,7 @@ class Pin < ActiveRecord::Base
 
   validates :user_id, :song_id, :pin_type, presence: true
 
+  paginates_per 10   # kaminari param
 
 
   def default_pin_type

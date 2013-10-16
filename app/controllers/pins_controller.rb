@@ -30,22 +30,28 @@ class PinsController < ApplicationController
 
         if params[:main_feed]
           @pins = @pins.where('song_id IN (?) OR "songs"."band_id" IN (?)',
-          current_user.followed_songs_ids, current_user.followed_bands_ids)
+          current_user.followed_songs_ids, current_user.followed_bands_ids).page(params[:page])
         elsif params[:user_id]
           if params[:likes] == 'true'
             user = User.find(params[:user_id])
-            @pins = @pins.where('id IN (?)', user.liked_pins_ids)
+            @pins = @pins.where('id IN (?)', user.liked_pins_ids).page(params[:page])
           else
-            @pins = @pins.where("user_id = ?", params[:user_id].to_i)
+            @pins = @pins.where("user_id = ?", params[:user_id].to_i).page(params[:page])
           end
         elsif params[:song_id]
-          @pins = @pins.where("song_id = ?", params[:song_id].to_i)
+          @pins = @pins.where("song_id = ?", params[:song_id].to_i).page(params[:page])
         elsif params[:band_id]
-          @pins = @pins.where('"songs"."band_id" = ?', params[:band_id].to_i)
+          @pins = @pins.where('"songs"."band_id" = ?', params[:band_id].to_i).page(params[:page])
+        else
+          @pins = @pins.page(params[:page])
         end
 
-        render json: @pins.to_json(include: { comments: { include: :user }, likes: {}, band: {}, song: {}, user: {}})
+        render json: {
 
+          models: @pins.to_json(include: { comments: { include: :user }, likes: {}, band: {}, song: {}, user: {}}),
+          page_number: params[:page],
+          total_pages: @pins.total_pages
+        }
       end
     end
   end

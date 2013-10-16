@@ -52,6 +52,7 @@ MP.Views.PinsIndexView = Backbone.View.extend({
       var colDiv = 'div.' + that.which_col();
       that.$el.find(colDiv).append(pinCardView);
     });
+    this.listenForScroll();
     return that;
   },
 
@@ -69,6 +70,41 @@ MP.Views.PinsIndexView = Backbone.View.extend({
   remove: function() {
       $(window).off("resize", this.resizedBuffer);
       Backbone.View.prototype.remove.apply(this, arguments);
+  },
+
+  listenForScroll: function () {
+    $(window).off("scroll"); // remove past view's listeners
+    var throttledCallback = _.throttle(this.requestNextPage.bind(this), 200);
+    $(window).on("scroll", throttledCallback);
+  },
+
+  requestNextPage: function () {
+    var that = this;
+    if ($(window).scrollTop() > $(document).height() - $(window).height() - 50) {
+      if (that.collection.page_number < that.collection.total_pages) {
+        that.collection.fetch({
+          data: { page: that.collection.page_number + 1 },
+          success: function (res) {
+            console.log("successfully fetched page " + that.collection.page_number);
+            that.addNewPage(res);
+          }
+        });
+      }
+    }
+  },
+
+  addNewPage: function(res){
+    var that = this;
+    res.each(function(newPin){
+      var pinCardView = new MP.Views.PinCardView({ model: newPin });
+      var renderedCard = pinCardView.render().$el;
+      that._pinCardViews.push(renderedCard);
+      var colDiv = 'div.' + that.which_col();
+      that.$el.find(colDiv).append(renderedCard);
+      that.listenForScroll();
+    })
   }
+
+
 
 });

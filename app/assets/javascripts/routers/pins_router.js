@@ -28,7 +28,7 @@ MP.Routers.PinsRouter = Backbone.Router.extend({
   index: function(data){
     var that = this;
     this.pins = new MP.Collections.Pins();
-
+    data['page'] = 1;
     this.pins.fetch({
       data: data,
       success: function() {
