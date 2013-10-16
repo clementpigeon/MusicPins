@@ -178,8 +178,8 @@ MP.Routers.PinsRouter = Backbone.Router.extend({
   facebook_lookup: function(){
     var that = this;
 
-    var flickrLookupView = new MP.Views.FlickrLookupView();
-    that.$rootEl.html(flickrLookupView.render().$el);
+    var instagramLookupView = new MP.Views.InstagramLookupView();
+    that.$rootEl.html(instagramLookupView.render().$el);
 
   },
 

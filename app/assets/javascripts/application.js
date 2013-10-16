@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require jquery.serializeJSON
 //= require jquery.ui.all
+//= require jquery.cookie
 //= require underscore
 //= require backbone
 //= require music_pins

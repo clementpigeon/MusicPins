@@ -12,6 +12,7 @@ MP.Views.NewPinSavePinView = Backbone.View.extend({
     'submit form#createPin' : 'createPin',
     'click .fb-lookup' : 'facebookPhoto',
     'click .flickr-lookup' : 'flickrPhoto',
+    'click .instagram-lookup' : 'instagramPhoto',
   },
 
   createPin: function(event){
@@ -164,6 +165,11 @@ MP.Views.NewPinSavePinView = Backbone.View.extend({
   flickrPhoto: function(){
     var flickrLookupView = new MP.Views.FlickrLookupView();
     this.$el.find('.external_photos').html(flickrLookupView.render().$el);
-  }
+  },
+
+  instagramPhoto: function(){
+    var instagramLookupView = new MP.Views.InstagramLookupView();
+    this.$el.find('.external_photos').html(instagramLookupView.render().$el);
+  },
 
 });

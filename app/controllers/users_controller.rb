@@ -35,4 +35,8 @@ class UsersController < ApplicationController
     end
   end
 
+  def instagram
+    # renders the template
+  end
+
 end

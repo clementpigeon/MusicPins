@@ -20,4 +20,6 @@ MusicPins::Application.routes.draw do
 
   root :to => "pins#index"
 
+  get '/api_callback', to: 'users#instagram'
+
 end

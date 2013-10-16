@@ -1,0 +1,9 @@
+<h1>You can now close this window</h1>
+
+<script>
+var hash = $(location).attr('hash');
+var instagram_token = hash.split('=')[1];
+$.cookie('instagram_token', instagram_token);
+console.log($.cookie('instagram_token'));
+window.close();
+</script>

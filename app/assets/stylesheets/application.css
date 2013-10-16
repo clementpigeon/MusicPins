@@ -87,7 +87,7 @@ h3 {
   border-radius: 4px;
 }
 
-.fb-lookup, .flickr-lookup {
+.fb-lookup, .flickr-lookup, .instagram-lookup {
   display:inline-block;
   border: 1px solid grey;
   width: 100px;
