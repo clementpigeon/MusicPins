@@ -11,6 +11,7 @@ MP.Views.PinFocusView = Backbone.View.extend({
 
   initialize: function(){
     this.model.likes = new MP.Collections.Likes(this.model.get('likes'));
+
   },
 
   render: function () {

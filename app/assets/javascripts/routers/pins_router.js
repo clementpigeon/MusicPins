@@ -105,7 +105,7 @@ MP.Routers.PinsRouter = Backbone.Router.extend({
   },
 
   pinFocus: function(pin_id){
-    if (!this.pins) {
+    if (this.pins.length === 0) {
       var that = this;
       var pin = new MP.Models.Pin({id: pin_id});
       pin.fetch({
