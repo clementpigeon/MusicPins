@@ -44,11 +44,10 @@ MP.Views.NewPinSavePinView = Backbone.View.extend({
         var pin = that.collection.create(newPin,
           {
           success: function(pin){
-            that.collection.trigger("new_pin", pin);
             console.log('Pin creation success');
             that.createSongFollowing();
             that.createBandFollowing();
-            that.returnToFeed();
+            that.redirectToPins();
           },
           error: function(res){
             console.log('Pin creation failure');
@@ -156,10 +155,10 @@ MP.Views.NewPinSavePinView = Backbone.View.extend({
     $.ajax(ajaxOptions);
   },
 
-  returnToFeed: function(){
+  redirectToPins: function(){
     this.remove();
     this.newPinFreebaseSongSelectView.remove();
-    MP.router.navigate("/", {trigger: false});
+    MP.router.navigate("/user/" + window.current_user.id, {trigger: true});
   },
 
   facebookPhoto: function(){

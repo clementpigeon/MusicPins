@@ -13,12 +13,6 @@ MP.Views.PinsIndexView = Backbone.View.extend({
     this.$el.html(that.template());
     this.currentLayout = this.widthToLayout($('body').width());
 
-    this.listenTo(this.collection, 'new_pin', function(pin){
-      var pinCardView = new MP.Views.PinCardView({ model: pin });
-      this._pinCardViews.unshift(pinCardView);
-      that.render();
-    });
-
     this.listenTo(this.collection, 'reset', function(options, other){
       if ($(document).scrollTop() > 50){
         $('body').animate({
@@ -69,6 +63,33 @@ MP.Views.PinsIndexView = Backbone.View.extend({
     return [nb, colWidth * nb];
   },
 
+  arrange: function () {
+    var that = this;
+
+    this.$('section.feed_container').width(this.currentLayout[1]);
+    var time = 0;
+    var cardNb = 0;
+
+    _(this._pinCardViews).each(function(pinCardView){
+      cardNb++;
+
+      var renderedCard = pinCardView.render().$el ;
+      if (cardNb > 9){
+        setTimeout(function () {
+          var colDiv = 'div.' + that.which_col();
+          that.$el.find(colDiv).append(renderedCard);
+        }, time);
+        time += 1;
+      }
+      else {
+        var colDiv = 'div.' + that.which_col();
+        that.$el.find(colDiv).append(renderedCard);
+      }
+
+    });
+    return that;
+  },
+
   render: function () {
     var that = this;
 
@@ -79,15 +100,8 @@ MP.Views.PinsIndexView = Backbone.View.extend({
 
     this.collection.each(this.addCardViewToArray);
 
-    this.colNumber = this.currentLayout[0];
-    this.$('section.feed_container').width(this.currentLayout[1]);
+    this.arrange();
 
-    this.col_index = 0;
-
-    _(this._pinCardViews).each(function(pinCardView){
-        var colDiv = 'div.' + that.which_col();
-        that.$el.find(colDiv).append(pinCardView.render().$el);
-    });
     this.listenForScroll();
     return that;
   },
@@ -139,16 +153,16 @@ MP.Views.PinsIndexView = Backbone.View.extend({
 
   addNewPage: function(res){
     var that = this;
+    var time = 100;
     res.each(function(newPin){
       var pinCardView = new MP.Views.PinCardView({ model: newPin });
       that._pinCardViews.push(pinCardView);
       var renderedCard = pinCardView.render().$el;
-      var time = 0;
       setTimeout(function () {
         var colDiv = 'div.' + that.which_col();
         that.$el.find(colDiv).append(renderedCard);
               }, time);
-      time += 200;
+      time += 100;
     });
     that.listenForScroll();
   }

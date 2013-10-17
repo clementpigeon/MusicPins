@@ -94,9 +94,6 @@ MP.Routers.PinsRouter = Backbone.Router.extend({
   },
 
   newPin: function(){
-    // if (this.pinsIndexView) {
-    //   this.pinsIndexView.remove();
-    // }
     this.newPinFreebaseSongSelectView = new MP.Views.NewPinFreebaseSongSelectView(this, this.pins);
     this.$box.html(this.newPinFreebaseSongSelectView.render().$el);
   },
