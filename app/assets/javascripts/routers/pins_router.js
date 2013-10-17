@@ -126,7 +126,7 @@ MP.Routers.PinsRouter = Backbone.Router.extend({
     bands.fetch({
       success: function(data){
         var popularBandsView = new MP.Views.PopularBandsView({collection: bands});
-        that.$rootEl.html(popularBandsView.render().$el)
+        that.$box.html(popularBandsView.render().$el)
       }
     });
   },
