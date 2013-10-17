@@ -4,8 +4,9 @@ MP.Views.NewPinFreebaseSongSelectView = Backbone.View.extend({
 
   className: 'newPin',
 
-  initialize: function(router){
-    this.router = router
+  initialize: function(router, pins){
+    this.router = router;
+    this.pins = pins;
   },
 
   render: function () {

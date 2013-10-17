@@ -41,6 +41,7 @@ MP.Routers.PinsRouter = Backbone.Router.extend({
         });
 
       },
+      silent: true,
       error: function() {
         console.log("Failed to fetch.");
       }
@@ -87,7 +88,7 @@ MP.Routers.PinsRouter = Backbone.Router.extend({
     // if (this.pinsIndexView) {
     //   this.pinsIndexView.remove();
     // }
-    this.newPinFreebaseSongSelectView = new MP.Views.NewPinFreebaseSongSelectView(this);
+    this.newPinFreebaseSongSelectView = new MP.Views.NewPinFreebaseSongSelectView(this, this.pins);
     this.$box.html(this.newPinFreebaseSongSelectView.render().$el);
   },
 

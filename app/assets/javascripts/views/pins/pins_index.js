@@ -12,6 +12,9 @@ MP.Views.PinsIndexView = Backbone.View.extend({
 
     this.currentLayout = this.widthToLayout($('body').width());
     this.render();
+    this.listenTo(this.collection, 'add', function(){
+      console.log('collection add');
+    });
     $(window).on("resize", this.resizedBuffer);
   },
 
@@ -109,7 +112,8 @@ MP.Views.PinsIndexView = Backbone.View.extend({
           success: function (res) {
             console.log("successfully fetched page " + that.collection.page_number);
             that.addNewPage(res);
-          }
+          },
+          silent: true
         });
       }
     }

@@ -5,6 +5,7 @@ MP.Views.NewPinSavePinView = Backbone.View.extend({
   render: function (newPinFreebaseSongSelectView) {
     this.newPinFreebaseSongSelectView = newPinFreebaseSongSelectView;
     this.$el.append(this.template());
+    this.collection = newPinFreebaseSongSelectView.pins;
     return this;
   },
 
@@ -40,7 +41,7 @@ MP.Views.NewPinSavePinView = Backbone.View.extend({
         that.song_id = song_id;
         newPin.pin.song_id = song_id;
 
-        var pin = new MP.Models.Pin(newPin);
+        var pin = that.collection.create(newPin);
 
         pin.save(null, {
           success: function(pin){
