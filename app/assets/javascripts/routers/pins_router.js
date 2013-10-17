@@ -42,7 +42,7 @@ MP.Routers.PinsRouter = Backbone.Router.extend({
 
   index: function(){
     var that = this;
-
+    $('#overlay').hide();
     this.data['page'] = 1;
 
     this.pins.fetch({
@@ -95,6 +95,7 @@ MP.Routers.PinsRouter = Backbone.Router.extend({
 
   newPin: function(){
     this.newPinFreebaseSongSelectView = new MP.Views.NewPinFreebaseSongSelectView(this, this.pins);
+    $('#overlay').show();
     this.$box.html(this.newPinFreebaseSongSelectView.render().$el);
   },
 
@@ -132,6 +133,7 @@ MP.Routers.PinsRouter = Backbone.Router.extend({
     bands.fetch({
       success: function(data){
         var popularBandsView = new MP.Views.PopularBandsView({collection: bands});
+        $('#overlay').show();
         that.$box.html(popularBandsView.render().$el)
       }
     });
@@ -144,6 +146,7 @@ MP.Routers.PinsRouter = Backbone.Router.extend({
     songs.fetch({
       success: function(data){
         var popularSongsView = new MP.Views.PopularSongsView({collection: songs});
+        $('#overlay').show();
         that.$box.html(popularSongsView.render().$el)
       }
     });
@@ -160,6 +163,7 @@ MP.Routers.PinsRouter = Backbone.Router.extend({
         var followedSongsView = new MP.Views.FollowedSongsView({
           collection: user.get('song_followings')
         });
+        $('#overlay').show();
         that.$box.html(followedSongsView.render().$el)
       },
       error: function(data, other, yetother){
@@ -179,6 +183,7 @@ MP.Routers.PinsRouter = Backbone.Router.extend({
         var followedBandsView = new MP.Views.FollowedBandsView({
           collection: user.get('band_followings')
         });
+        $('#overlay').show();
         that.$box.html(followedBandsView.render().$el)
       },
       error: function(data, other, yetother){
