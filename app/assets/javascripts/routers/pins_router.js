@@ -36,7 +36,8 @@ MP.Routers.PinsRouter = Backbone.Router.extend({
         console.log('rendering ' + that.pins.length + ' pin(s)');
         that.pinsIndexView = new MP.Views.PinsIndexView({
           collection: that.pins,
-          el: that.$rootEl
+          el: that.$rootEl,
+          data: data
         });
 
       },

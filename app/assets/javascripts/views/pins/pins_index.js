@@ -2,9 +2,11 @@ MP.Views.PinsIndexView = Backbone.View.extend({
 
   template: JST['pins/index'],
 
-  initialize: function(){
+  initialize: function(options){
     _.bindAll(this, 'addCardViewToArray', 'render', 'resizedBuffer', 'resized');
 
+    this.data = options['data'];
+    console.log(this.data);
     this._pinCardViews = [];
     this.collection.each(this.addCardViewToArray);
 
@@ -100,8 +102,10 @@ MP.Views.PinsIndexView = Backbone.View.extend({
     var that = this;
     if ($(window).scrollTop() > $(document).height() - $(window).height() - 50) {
       if (that.collection.page_number < that.collection.total_pages) {
+        var data = this.data;
+        data['page'] = that.collection.page_number + 1;
         that.collection.fetch({
-          data: { page: that.collection.page_number + 1 },
+          data: data,
           success: function (res) {
             console.log("successfully fetched page " + that.collection.page_number);
             that.addNewPage(res);

@@ -39,7 +39,9 @@ MP.Views.NewPinSavePinView = Backbone.View.extend({
       that.getSongIdOrCreateSong(song_mid, song_title, band_id, function(song_id){
         that.song_id = song_id;
         newPin.pin.song_id = song_id;
+
         var pin = new MP.Models.Pin(newPin);
+
         pin.save(null, {
           success: function(pin){
             console.log('Pin creation success');
