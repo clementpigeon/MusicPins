@@ -6,17 +6,19 @@ MP.Views.PinsIndexView = Backbone.View.extend({
     _.bindAll(this, 'addCardViewToArray', 'render', 'resizedBuffer', 'resized');
     var that = this;
     this.data = options['data'];
-    console.log(this.data);
+
     this._pinCardViews = [];
     this.collection.each(this.addCardViewToArray);
 
     this.currentLayout = this.widthToLayout($('body').width());
     this.render();
+
     this.listenTo(this.collection, 'new_pin', function(pin){
       var pinCardView = new MP.Views.PinCardView({ model: pin });
       this._pinCardViews.unshift(pinCardView.render().$el);
       that.render();
     });
+
     $(window).on("resize", this.resizedBuffer);
   },
 
@@ -59,13 +61,8 @@ MP.Views.PinsIndexView = Backbone.View.extend({
     this.col_index = 0;
 
     _(this._pinCardViews).each(function(pinCardView){
-      // var time = 0;
-      // setTimeout(function () {
         var colDiv = 'div.' + that.which_col();
         that.$el.find(colDiv).append(pinCardView);
-      // }
-      // , time);
-      // time += 10;
     });
     this.listenForScroll();
     return that;
@@ -77,18 +74,13 @@ MP.Views.PinsIndexView = Backbone.View.extend({
     var smallest = 99999;
     var nbCol = this.currentLayout[0];
 
-    // var obj = {}   // for debugging
-
     for (var i = 1; i <= nbCol; i++) {
       var height = this.$el.find('div.col' + i).height();
-      // obj[i] = height;    // for debugging
       if (height < smallest){
         smallestCol = i;
         smallest = height;
       }
     }
-    // obj['smallest'] = smallestCol;       // for debugging
-    // console.log(JSON.stringify(obj));    // for debugging
     return ('col' + smallestCol);
   },
 
