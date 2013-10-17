@@ -44,19 +44,9 @@ MP.Routers.PinsRouter = Backbone.Router.extend({
     var that = this;
 
     this.data['page'] = 1;
+
     this.pins.fetch({
       data: this.data,
-      success: function() {
-        console.log('rendering ' + that.pins.length + ' pin(s)');
-        // that.pinsIndexView.render();
-        // that.pinsIndexView = new MP.Views.PinsIndexView({
-        //   collection: that.pins,
-        //   el: that.$rootEl,
-        //   data: data
-        // });
-
-      },
-      // silent: true,
       error: function() {
         console.log("Failed to fetch.");
       },
@@ -67,11 +57,11 @@ MP.Routers.PinsRouter = Backbone.Router.extend({
   },
 
   all: function(){
-    this.index({});
+    this.data = {};
+    this.index();
   },
 
   mainFeed: function(){
-    console.log('mainFeed');
     this.data = {main_feed: true};
 
     this.index();
