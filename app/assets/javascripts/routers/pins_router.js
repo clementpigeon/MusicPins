@@ -22,23 +22,30 @@ MP.Routers.PinsRouter = Backbone.Router.extend({
     this.$box = $box;
     this.topBarView = new MP.Views.TopBarView();
     this.$topBar.html(this.topBarView.render().$el);
+    this.pins = new MP.Collections.Pins();;
 
-    this.pins = null;
+    this.pinsIndexView = new MP.Views.PinsIndexView({
+      collection: this.pins,
+      el: this.$rootEl//,
+      // data: data
+    })
+
   },
 
   index: function(data){
     var that = this;
-    this.pins = new MP.Collections.Pins();
+
     data['page'] = 1;
     this.pins.fetch({
       data: data,
       success: function() {
         console.log('rendering ' + that.pins.length + ' pin(s)');
-        that.pinsIndexView = new MP.Views.PinsIndexView({
-          collection: that.pins,
-          el: that.$rootEl,
-          data: data
-        });
+        that.pinsIndexView.render();
+        // that.pinsIndexView = new MP.Views.PinsIndexView({
+        //   collection: that.pins,
+        //   el: that.$rootEl,
+        //   data: data
+        // });
 
       },
       silent: true,

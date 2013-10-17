@@ -8,10 +8,10 @@ MP.Views.PinsIndexView = Backbone.View.extend({
     this.data = options['data'];
 
     this._pinCardViews = [];
-    this.collection.each(this.addCardViewToArray);
 
+    this.$el.html(that.template());
     this.currentLayout = this.widthToLayout($('body').width());
-    this.render();
+    // this.render();
 
     this.listenTo(this.collection, 'new_pin', function(pin){
       var pinCardView = new MP.Views.PinCardView({ model: pin });
@@ -53,7 +53,9 @@ MP.Views.PinsIndexView = Backbone.View.extend({
 
   render: function () {
     var that = this;
-    that.$el.html(that.template());
+
+
+    this.collection.each(this.addCardViewToArray);
 
     this.colNumber = this.currentLayout[0];
     this.$('section.feed_container').width(this.currentLayout[1]);
