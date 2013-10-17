@@ -1,3 +1,4 @@
+
 MP.Views.PinsIndexView = Backbone.View.extend({
 
   template: JST['pins/index'],
@@ -5,17 +6,26 @@ MP.Views.PinsIndexView = Backbone.View.extend({
   initialize: function(options){
     _.bindAll(this, 'addCardViewToArray', 'render', 'resizedBuffer', 'resized');
     var that = this;
-    this.data = options['data'];
+
+    this.data = options['router'].data;
 
     this._pinCardViews = [];
 
     this.$el.html(that.template());
     this.currentLayout = this.widthToLayout($('body').width());
-    // this.render();
 
     this.listenTo(this.collection, 'new_pin', function(pin){
       var pinCardView = new MP.Views.PinCardView({ model: pin });
       this._pinCardViews.unshift(pinCardView);
+      that.render();
+    });
+
+    this.listenTo(this.collection, 'reset', function(options, other){
+
+      console.log('reset');
+      console.log(options);
+      console.log(other);
+
       that.render();
     });
 
@@ -54,7 +64,13 @@ MP.Views.PinsIndexView = Backbone.View.extend({
   render: function () {
     var that = this;
 
+    _(this._pinCardViews).each(function(view){
+      view.leave();
+    });
+    this._pinCardViews = [];
 
+    console.log('index render');
+    console.log(that.collection);
     this.collection.each(this.addCardViewToArray);
 
     this.colNumber = this.currentLayout[0];

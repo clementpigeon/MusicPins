@@ -16,31 +16,39 @@ MP.Routers.PinsRouter = Backbone.Router.extend({
   },
 
   initialize: function($rootEl, $topBar, $box){
+    var that = this;
     window.current_user = JSON.parse($("#bootstrapped_current_user").html());
     this.$rootEl = $rootEl;
     this.$topBar = $topBar;
     this.$box = $box;
+
     this.topBarView = new MP.Views.TopBarView();
     this.$topBar.html(this.topBarView.render().$el);
+
     this.pins = new MP.Collections.Pins();;
+    this.data = {};
 
     this.pinsIndexView = new MP.Views.PinsIndexView({
       collection: this.pins,
-      el: this.$rootEl//,
-      // data: data
-    })
+      el: this.$rootEl,
+      router: this
+    });
+    // this.listenTo(this.pins, 'add', function(){
+    //   console.log('add')
+    //   that.pinsIndexView.render();
+    // });
 
   },
 
-  index: function(data){
+  index: function(){
     var that = this;
 
-    data['page'] = 1;
+    this.data['page'] = 1;
     this.pins.fetch({
-      data: data,
+      data: this.data,
       success: function() {
         console.log('rendering ' + that.pins.length + ' pin(s)');
-        that.pinsIndexView.render();
+        // that.pinsIndexView.render();
         // that.pinsIndexView = new MP.Views.PinsIndexView({
         //   collection: that.pins,
         //   el: that.$rootEl,
@@ -48,10 +56,12 @@ MP.Routers.PinsRouter = Backbone.Router.extend({
         // });
 
       },
-      silent: true,
+      // silent: true,
       error: function() {
         console.log("Failed to fetch.");
-      }
+      },
+      reset: true,
+      wait: true
     });
 
   },
@@ -61,34 +71,36 @@ MP.Routers.PinsRouter = Backbone.Router.extend({
   },
 
   mainFeed: function(){
-    var data = {main_feed: true};
-    this.index(data);
+    console.log('mainFeed');
+    this.data = {main_feed: true};
+
+    this.index();
   },
 
   userFeed: function(user_id){
-    var data = {
+    this.data = {
       user_id: user_id,
       likes: false
     };
-    this.index(data);
+    this.index();
   },
 
   songFeed: function(song_id){
-    var data = {song_id: song_id};
-    this.index(data);
+    this.data = {song_id: song_id};
+    this.index();
   },
 
   bandFeed: function(band_id){
-    var data = {band_id: band_id};
-    this.index(data);
+    this.data = {band_id: band_id};
+    this.index();
   },
 
   likedPinsFeed: function(user_id){
-    var data = {
+    this.data = {
       likes: true,
       user_id: user_id
     };
-    this.index(data);
+    this.index();
   },
 
   newPin: function(){

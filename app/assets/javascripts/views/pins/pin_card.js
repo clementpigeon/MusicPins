@@ -24,6 +24,11 @@ MP.Views.PinCardView = Backbone.View.extend({
     this.$el.find('.likes').append(this.likesView.render().$el);
 
     return this;
+  },
+
+  leave: function(){
+    this.likesView.remove();
+    this.remove();
   }
 
 });
