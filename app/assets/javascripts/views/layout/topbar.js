@@ -8,8 +8,6 @@ MP.Views.TopBarView = Backbone.View.extend({
     var that = this;
     that.$el.html(that.template());
 
-
-
     return that;
   }
 

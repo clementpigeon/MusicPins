@@ -5,7 +5,7 @@ class PinsController < ApplicationController
     @pin = Pin.new(params[:pin])
 
     if @pin.save
-      render json: @pin
+      render json: @pin.to_json(include: { comments: { include: :user }, band: {}, song: {}, user: {}, likes: {}})
     else
       render json: @pin.errors.full_messages, status: 422
     end

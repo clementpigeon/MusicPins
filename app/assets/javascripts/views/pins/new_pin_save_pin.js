@@ -41,10 +41,10 @@ MP.Views.NewPinSavePinView = Backbone.View.extend({
         that.song_id = song_id;
         newPin.pin.song_id = song_id;
 
-        var pin = that.collection.create(newPin);
-
-        pin.save(null, {
+        var pin = that.collection.create(newPin,
+          {
           success: function(pin){
+            that.collection.trigger("new_pin", pin);
             console.log('Pin creation success');
             that.createSongFollowing();
             that.createBandFollowing();
@@ -53,7 +53,8 @@ MP.Views.NewPinSavePinView = Backbone.View.extend({
           error: function(res){
             console.log('Pin creation failure');
             console.log(res);
-          }
+          },
+          wait: true
         });
       })
     });
