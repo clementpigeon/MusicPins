@@ -24,7 +24,8 @@ MP.Views.NewPinFreebaseSongSelectView = Backbone.View.extend({
       this.songValue(e),
       // this.displayValues(e),
       this.songSelected(e)
-    }
+    },
+    'click .close': 'removeView'
 
   },
 
@@ -32,10 +33,6 @@ MP.Views.NewPinFreebaseSongSelectView = Backbone.View.extend({
     e.preventDefault();
     e.currentTarget.remove();
     this.router.addSavePinView();
-
-    // this.newPinSavePinView = new MP.Views.NewPinSavePinView(this);
-    // this.$el.append(this.newPinSavePinView.render().$el);
-
   },
 
   FREEBASE_API_URL: 'https://www.googleapis.com/freebase/v1/search',
@@ -166,6 +163,14 @@ MP.Views.NewPinFreebaseSongSelectView = Backbone.View.extend({
         $( this ).removeClass( "ui-corner-top" ).addClass( "ui-corner-all" );
       }
     });
+  },
+
+  removeView: function(){
+    if (this.router.newPinSavePinView){
+      this.router.newPinSavePinView.remove();
+    }
+    $('#overlay').hide();
+    this.remove();
   }
 
 
