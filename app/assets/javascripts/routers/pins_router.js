@@ -22,7 +22,7 @@ MP.Routers.PinsRouter = Backbone.Router.extend({
     this.$topBar = $topBar;
     this.$box = $box;
 
-    this.topBarView = new MP.Views.TopBarView();
+    this.topBarView = new MP.Views.TopBarView(this);
     this.$topBar.html(this.topBarView.render().$el);
 
     this.pins = new MP.Collections.Pins();;
