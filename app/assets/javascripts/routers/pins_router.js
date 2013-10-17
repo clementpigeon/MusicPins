@@ -154,7 +154,7 @@ MP.Routers.PinsRouter = Backbone.Router.extend({
         var followedSongsView = new MP.Views.FollowedSongsView({
           collection: user.get('song_followings')
         });
-        that.$rootEl.html(followedSongsView.render().$el)
+        that.$box.html(followedSongsView.render().$el)
       },
       error: function(data, other, yetother){
         console.log('error');

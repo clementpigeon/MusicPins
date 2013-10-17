@@ -28,7 +28,6 @@ MP.Views.FollowedBandsView = Backbone.View.extend({
   },
 
   removeView: function(){
-    console.log('not remove');
     this.remove();
     _(this.subs).each(function(sub){
       sub.remove();

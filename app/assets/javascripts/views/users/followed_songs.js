@@ -6,6 +6,11 @@ MP.Views.FollowedSongsView = Backbone.View.extend({
 
   initialize: function(){
     this.listenTo(this.collection, 'remove', this.render);
+    this.subs = [];
+  },
+
+  events: {
+    'click a:not(.delete)' : 'removeView'
   },
 
   render: function () {
@@ -15,10 +20,18 @@ MP.Views.FollowedSongsView = Backbone.View.extend({
       var followedSongsDetailView = new MP.Views.FollowedSongsDetailView({
         model: song_following
       });
+      that.subs.push(followedSongsDetailView);
       that.$el.find('ul').append(followedSongsDetailView.render().$el);
     });
 
     return this;
+  },
+
+  removeView: function(){
+    this.remove();
+    _(this.subs).each(function(sub){
+      sub.remove();
+    });
   }
 
 });
