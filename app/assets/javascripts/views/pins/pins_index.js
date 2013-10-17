@@ -52,8 +52,13 @@ MP.Views.PinsIndexView = Backbone.View.extend({
     this.col_index = 0;
 
     _(this._pinCardViews).each(function(pinCardView){
-      var colDiv = 'div.' + that.which_col();
-      that.$el.find(colDiv).append(pinCardView);
+      var time = 200;
+      setTimeout(function () {
+        var colDiv = 'div.' + that.which_col();
+        that.$el.find(colDiv).append(pinCardView);
+      }
+      , time);
+      time += 200;
     });
     this.listenForScroll();
     return that;
@@ -117,7 +122,7 @@ MP.Views.PinsIndexView = Backbone.View.extend({
         var colDiv = 'div.' + that.which_col();
         that.$el.find(colDiv).append(renderedCard);
               }, time);
-        time += 200;
+      time += 200;
     });
     that.listenForScroll();
   }
