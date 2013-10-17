@@ -38,6 +38,13 @@ h3 {
   padding-top: 45px;
 }
 
+#box {
+  position:absolute;
+  width: 100%;
+  top: 95px;
+}
+
+
 
 /*  TOP BAR  */
 

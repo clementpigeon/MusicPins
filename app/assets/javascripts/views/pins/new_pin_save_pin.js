@@ -154,7 +154,8 @@ MP.Views.NewPinSavePinView = Backbone.View.extend({
 
   returnToFeed: function(){
     this.remove();
-    MP.router.navigate("/", {trigger: true});
+    this.newPinFreebaseSongSelectView.remove();
+    MP.router.navigate("/", {trigger: false});
   },
 
   facebookPhoto: function(){

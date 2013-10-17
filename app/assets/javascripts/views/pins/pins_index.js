@@ -52,13 +52,13 @@ MP.Views.PinsIndexView = Backbone.View.extend({
     this.col_index = 0;
 
     _(this._pinCardViews).each(function(pinCardView){
-      var time = 200;
-      setTimeout(function () {
+      // var time = 0;
+      // setTimeout(function () {
         var colDiv = 'div.' + that.which_col();
         that.$el.find(colDiv).append(pinCardView);
-      }
-      , time);
-      time += 200;
+      // }
+      // , time);
+      // time += 10;
     });
     this.listenForScroll();
     return that;
@@ -70,18 +70,18 @@ MP.Views.PinsIndexView = Backbone.View.extend({
     var smallest = 99999;
     var nbCol = this.currentLayout[0];
 
-    var obj = {}   // for debugging
+    // var obj = {}   // for debugging
 
     for (var i = 1; i <= nbCol; i++) {
       var height = this.$el.find('div.col' + i).height();
-      obj[i] = height;    // for debugging
+      // obj[i] = height;    // for debugging
       if (height < smallest){
         smallestCol = i;
         smallest = height;
       }
     }
-    obj['smallest'] = smallestCol;       // for debugging
-    console.log(JSON.stringify(obj));    // for debugging
+    // obj['smallest'] = smallestCol;       // for debugging
+    // console.log(JSON.stringify(obj));    // for debugging
     return ('col' + smallestCol);
   },
 

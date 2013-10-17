@@ -15,11 +15,12 @@ MP.Routers.PinsRouter = Backbone.Router.extend({
     'all': 'all'
   },
 
-  initialize: function($rootEl, $topBar){
+  initialize: function($rootEl, $topBar, $box){
     window.current_user = JSON.parse($("#bootstrapped_current_user").html());
     this.$rootEl = $rootEl;
     this.$topBar = $topBar;
-    this.topBarView = new MP.Views.TopBarView({  });
+    this.$box = $box;
+    this.topBarView = new MP.Views.TopBarView();
     this.$topBar.html(this.topBarView.render().$el);
 
     this.pins = null;
@@ -37,6 +38,7 @@ MP.Routers.PinsRouter = Backbone.Router.extend({
           collection: that.pins,
           el: that.$rootEl
         });
+
       },
       error: function() {
         console.log("Failed to fetch.");
@@ -81,11 +83,11 @@ MP.Routers.PinsRouter = Backbone.Router.extend({
   },
 
   newPin: function(){
-    if (this.pinsIndexView) {
-      this.pinsIndexView.remove();
-    }
+    // if (this.pinsIndexView) {
+    //   this.pinsIndexView.remove();
+    // }
     this.newPinFreebaseSongSelectView = new MP.Views.NewPinFreebaseSongSelectView(this);
-    this.$rootEl.html(this.newPinFreebaseSongSelectView.render().$el);
+    this.$box.html(this.newPinFreebaseSongSelectView.render().$el);
   },
 
   addSavePinView: function(){
