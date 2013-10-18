@@ -3,11 +3,8 @@ MP.Views.InstagramLookupView = Backbone.View.extend({
   template: JST['instagram/instagram-lookup'],
 
   initialize:function(){
-  },
 
-  // events:{
-  //   'click #authenticated': 'checkAuth'
-  // },
+  },
 
   className: 'InstagramLookupView',
 
@@ -27,13 +24,6 @@ MP.Views.InstagramLookupView = Backbone.View.extend({
       }
     }, 200);
   },
-
-
-  // checkAuth: function(event){
-  //   event.preventDefault();
-  //   console.log($.cookie('instagram_token'));
-  //   this.photos_for_user();
-  // },
 
   photos_for_user: function(){
     var that = this;
@@ -76,9 +66,5 @@ MP.Views.InstagramLookupView = Backbone.View.extend({
     var facebookPhotosView = new MP.Views.FacebookPhotosView(photoLinksArray, this);
     this.$el.append(facebookPhotosView.render().$el);
   },
-
-
-
-
 
 });

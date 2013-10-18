@@ -158,6 +158,7 @@ MP.Views.NewPinSavePinView = Backbone.View.extend({
   redirectToPins: function(){
     this.remove();
     this.newPinFreebaseSongSelectView.remove();
+    $('#overlay').hide();
     MP.router.navigate("/user/" + window.current_user.id, {trigger: true});
   },
 
