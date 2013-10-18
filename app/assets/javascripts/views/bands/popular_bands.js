@@ -5,7 +5,8 @@ MP.Views.PopularBandsView = Backbone.View.extend({
   className: 'most_popular',
 
   events: {
-    'click a' : 'removeView'
+    'click a' : 'removeView',
+    'click .close' : 'removeView'
   },
 
   render: function () {
@@ -14,6 +15,7 @@ MP.Views.PopularBandsView = Backbone.View.extend({
   },
 
   removeView: function(){
+    $('#overlay').hide();
     this.remove();
   }
 

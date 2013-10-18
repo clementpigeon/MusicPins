@@ -1,15 +1,20 @@
 <form id='createPin'>
 <br><br>
-<p>Paste the link of the picture you want to pin to this song.</p>
-<input type='text' name='pin[link]' id='pin_link'></input>
-<p>Or choose a picture from one of the services below.</p>
+
+
+<p>Choose a picture from one of the services below.</p>
 <a class="fb-lookup">Facebook</a> <a class="flickr-lookup">Flickr</a> <a class="instagram-lookup">Instagram</a>
 <div class='external_photos'></div>
+<br>
+<p>Or directly paste the link of the picture or video you want to pin to this song.</p>
+<input type='text' name='pin[link]' id='pin_link'></input>
+<br>
+<input type="checkbox" name="pin[pin_type]" value="1">This is a YouTube video</input>
 <br><br>
-
 <textarea rows="4" cols="50" placeholder='Why does this picture remind you of this song?' name='pin[text]'></textarea>
-<p>type: blank for photo, 1 for youtube video
-<input type="text" name="pin[pin_type]"></input>
+
+
+
 <br><br>
 <button type="submit">Save</button>
 </form>

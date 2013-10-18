@@ -15,6 +15,7 @@ MP.Views.FlickrLookupView = Backbone.View.extend({
 
   render: function () {
     this.$el.html(this.template());
+    this.$el.find('.flickr_search').val($('#band').val());
     return this;
   },
 

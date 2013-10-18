@@ -5,22 +5,35 @@ MP.Views.InstagramLookupView = Backbone.View.extend({
   initialize:function(){
   },
 
-  events:{
-    'click #authenticated': 'checkAuth'
-  },
+  // events:{
+  //   'click #authenticated': 'checkAuth'
+  // },
 
   className: 'InstagramLookupView',
 
   render: function () {
+    this.foundCookie = false;
     this.$el.html(this.template());
+    this.regularlyCheckCookie();
     return this;
   },
 
-  checkAuth: function(event){
-    event.preventDefault();
-    console.log($.cookie('instagram_token'));
-    this.photos_for_user();
+  regularlyCheckCookie: function(cookieName, callback) {
+    var that = this;
+    setInterval(function() {
+      if ((that.foundCookie === false) && ($.cookie('instagram_token'))) {
+        that.foundCookie = true;
+        that.photos_for_user();
+      }
+    }, 200);
   },
+
+
+  // checkAuth: function(event){
+  //   event.preventDefault();
+  //   console.log($.cookie('instagram_token'));
+  //   this.photos_for_user();
+  // },
 
   photos_for_user: function(){
     var that = this;

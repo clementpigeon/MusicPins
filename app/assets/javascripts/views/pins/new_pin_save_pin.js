@@ -174,6 +174,9 @@ MP.Views.NewPinSavePinView = Backbone.View.extend({
   instagramPhoto: function(){
     var instagramLookupView = new MP.Views.InstagramLookupView();
     this.$el.find('.external_photos').html(instagramLookupView.render().$el);
+    var instagram_auth_url_local = "https://instagram.com/oauth/authorize/?client_id=79a5009290764cf7b5020180b9edba95&redirect_uri=http://localhost:3000/api_callback&response_type=token";
+    var instagram_auth_url_production = "https://instagram.com/oauth/authorize/?client_id=79a5009290764cf7b5020180b9edba95&redirect_uri=http://music-pins.herokuapp.com/api_callback&response_type=token";
+    if ($.cookie('instagram_token') === null) window.open(instagram_auth_url_local, '_blank');
   },
 
 });
