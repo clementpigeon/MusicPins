@@ -18,7 +18,9 @@ MP.Views.TopBarView = Backbone.View.extend({
   events: {
     'click .add_pin': 'add_pin',
     'click #followed_songs_link' : 'followedSongs',
-    'click #followed_bands_link' : 'followedBands'
+    'click #followed_bands_link' : 'followedBands',
+    'click #popular_bands_link' : 'mostPopularBands',
+    'click #popular_songs_link' : 'mostPopularSongs'
   },
 
   add_pin: function(event){
@@ -29,8 +31,7 @@ MP.Views.TopBarView = Backbone.View.extend({
   followedSongs: function(){
     console.log('followedSongs');
     var that = this;
-    var user_id = window.current_user.id;
-    var user = new MP.Models.User({id: user_id});
+    var user = new MP.Models.User({id: current_user.id});
     user.fetch({
       success: function(data){
         user.set({
@@ -39,7 +40,6 @@ MP.Views.TopBarView = Backbone.View.extend({
         var followedSongsView = new MP.Views.FollowedSongsView({
           collection: user.get('song_followings')
         });
-        $('#overlay').show();
         MP.$box.html(followedSongsView.render().$el)
       },
       error: function(data, other, yetother){
@@ -48,11 +48,9 @@ MP.Views.TopBarView = Backbone.View.extend({
     });
   },
 
-    followedBands: function(){
+  followedBands: function(){
     var that = this;
-    var user_id = $('#bootstrapped_current_user_id').html();
-    var user = new MP.Models.User({id: user_id});
-    var user = new MP.Models.User({id: user_id});
+    var user = new MP.Models.User({id: current_user.id});
     user.fetch({
       success: function(data){
         user.set({
@@ -61,12 +59,35 @@ MP.Views.TopBarView = Backbone.View.extend({
         var followedBandsView = new MP.Views.FollowedBandsView({
           collection: user.get('band_followings')
         });
-        $('#overlay').show();
         MP.$box.html(followedBandsView.render().$el)
       },
       error: function(data, other, yetother){
         console.log('error');
       },
+    });
+  },
+
+  mostPopularBands: function(){
+    var that = this;
+    var bands = new MP.Collections.Bands();
+
+    bands.fetch({
+      success: function(data){
+        var popularBandsView = new MP.Views.PopularBandsView({collection: bands});
+        MP.$box.html(popularBandsView.render().$el)
+      }
+    });
+  },
+
+  mostPopularSongs: function(){
+    var that = this;
+    var songs = new MP.Collections.Songs();
+
+    songs.fetch({
+      success: function(data){
+        var popularSongsView = new MP.Views.PopularSongsView({collection: songs});
+        MP.$box.html(popularSongsView.render().$el)
+      }
     });
   },
 
