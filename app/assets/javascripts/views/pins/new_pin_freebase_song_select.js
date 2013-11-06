@@ -166,8 +166,12 @@ MP.Views.NewPinFreebaseSongSelectView = Backbone.View.extend({
   },
 
   removeView: function(){
-    if (this.router.newPinSavePinView){
-      this.router.newPinSavePinView.remove();
+    var newPinSavePinView 
+    if (newPinSavePinView = this.router.newPinSavePinView) {
+      newPinSavePinView.remove();
+      if (newPinSavePinView.facebookLookupView) newPinSavePinView.facebookLookupView.remove();
+      if (newPinSavePinView.flickrLookupView) newPinSavePinView.flickrLookupView.remove();
+      if (newPinSavePinView.instagramLookupView) newPinSavePinView.instagramLookupView.remove();
     }
     $('#overlay').hide();
     this.remove();

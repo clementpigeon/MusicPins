@@ -157,24 +157,27 @@ MP.Views.NewPinSavePinView = Backbone.View.extend({
 
   redirectToPins: function(){
     this.remove();
+    if (this.facebookLookupView) this.facebookLookupView.remove();
+    if (this.flickrLookupView) this.flickrLookupView.remove();
+    if (this.instagramLookupView) this.instagramLookupView.remove();
     this.newPinFreebaseSongSelectView.remove();
     $('#overlay').hide();
     MP.router.navigate("/user/" + window.current_user.id, {trigger: true});
   },
 
   facebookPhoto: function(){
-    var facebookLookupView = new MP.Views.FacebookLookupView();
-    this.$el.find('.external_photos').html(facebookLookupView.render().$el);
+    this.facebookLookupView = new MP.Views.FacebookLookupView();
+    this.$el.find('.external_photos').html(this.facebookLookupView.render().$el);
   },
 
   flickrPhoto: function(){
-    var flickrLookupView = new MP.Views.FlickrLookupView();
-    this.$el.find('.external_photos').html(flickrLookupView.render().$el);
+    this.flickrLookupView = new MP.Views.FlickrLookupView();
+    this.$el.find('.external_photos').html(this.flickrLookupView.render().$el);
   },
 
   instagramPhoto: function(){
-    var instagramLookupView = new MP.Views.InstagramLookupView();
-    this.$el.find('.external_photos').html(instagramLookupView.render().$el);
+    this.instagramLookupView = new MP.Views.InstagramLookupView();
+    this.$el.find('.external_photos').html(this.instagramLookupView.render().$el);
     var instagram_auth_url_local = "https://instagram.com/oauth/authorize/?client_id=79a5009290764cf7b5020180b9edba95&redirect_uri=http://localhost:3000/api_callback&response_type=token";
     var instagram_auth_url_production = "https://instagram.com/oauth/authorize/?client_id=79a5009290764cf7b5020180b9edba95&redirect_uri=http://music-pins.herokuapp.com/api_callback&response_type=token";
     if ($.cookie('instagram_token') === null) window.open(instagram_auth_url_production, '_blank');
