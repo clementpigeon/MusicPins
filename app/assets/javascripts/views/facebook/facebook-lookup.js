@@ -22,9 +22,9 @@ MP.Views.FacebookLookupView = Backbone.View.extend({
         // init the FB JS SDK
       FB.init({
         appId      : '326940164112618',    // App ID from the app dashboard
-        channelUrl : '//WWW.YOUR_DOMAIN.COM/channel.html', // Channel file
+        // channelUrl : '//WWW.YOUR_DOMAIN.COM/channel.html', // Channel file
         status     : true,     // Check Facebook Login status
-        xfbml      : true      // Look for social plugins on the page
+        // xfbml      : true      // Look for social plugins on the page
       });
 
       FB.getLoginStatus(function(response) {
