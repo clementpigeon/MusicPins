@@ -6,9 +6,9 @@ MP.Routers.PinsRouter = Backbone.Router.extend({
     'user/:user_id/likes': 'likedPinsFeed',
     'user/:user_id/followed_songs': 'followedSongs',
     'user/:user_id/followed_bands': 'followedBands',
-    'song/most_popular': 'mostPopularSongs',
+    // 'song/most_popular': 'mostPopularSongs',
     'song/:song_id': 'songFeed',
-    'band/most_popular': 'mostPopularBands',
+    // 'band/most_popular': 'mostPopularBands',
     'band/:band_id': 'bandFeed',
     'pin/:pin_id' : 'pinFocus',
     'facebook': 'facebook_lookup',
@@ -33,11 +33,6 @@ MP.Routers.PinsRouter = Backbone.Router.extend({
       el: this.$rootEl,
       router: this
     });
-    // this.listenTo(this.pins, 'add', function(){
-    //   console.log('add')
-    //   that.pinsIndexView.render();
-    // });
-
   },
 
   index: function(){
@@ -63,7 +58,6 @@ MP.Routers.PinsRouter = Backbone.Router.extend({
 
   mainFeed: function(){
     this.data = {main_feed: true};
-
     this.index();
   },
 
@@ -152,45 +146,45 @@ MP.Routers.PinsRouter = Backbone.Router.extend({
     });
   },
 
-  followedSongs: function(user_id){
-    var that = this;
-    var user = new MP.Models.User({id: user_id});
-    user.fetch({
-      success: function(data){
-        user.set({
-          'song_followings': new MP.Collections.SongFollowings(user.get('song_followings'))
-        });
-        var followedSongsView = new MP.Views.FollowedSongsView({
-          collection: user.get('song_followings')
-        });
-        $('#overlay').show();
-        that.$box.html(followedSongsView.render().$el)
-      },
-      error: function(data, other, yetother){
-        console.log('error');
-      },
-    });
-  },
+  // followedSongs: function(user_id){
+  //   var that = this;
+  //   var user = new MP.Models.User({id: user_id});
+  //   user.fetch({
+  //     success: function(data){
+  //       user.set({
+  //         'song_followings': new MP.Collections.SongFollowings(user.get('song_followings'))
+  //       });
+  //       var followedSongsView = new MP.Views.FollowedSongsView({
+  //         collection: user.get('song_followings')
+  //       });
+  //       $('#overlay').show();
+  //       that.$box.html(followedSongsView.render().$el)
+  //     },
+  //     error: function(data, other, yetother){
+  //       console.log('error');
+  //     },
+  //   });
+  // },
 
-  followedBands: function(user_id){
-    var that = this;
-    var user = new MP.Models.User({id: user_id});
-    user.fetch({
-      success: function(data){
-        user.set({
-          'band_followings': new MP.Collections.BandFollowings(user.get('band_followings'))
-        });
-        var followedBandsView = new MP.Views.FollowedBandsView({
-          collection: user.get('band_followings')
-        });
-        $('#overlay').show();
-        that.$box.html(followedBandsView.render().$el)
-      },
-      error: function(data, other, yetother){
-        console.log('error');
-      },
-    });
-  },
+  // followedBands: function(user_id){
+  //   var that = this;
+  //   var user = new MP.Models.User({id: user_id});
+  //   user.fetch({
+  //     success: function(data){
+  //       user.set({
+  //         'band_followings': new MP.Collections.BandFollowings(user.get('band_followings'))
+  //       });
+  //       var followedBandsView = new MP.Views.FollowedBandsView({
+  //         collection: user.get('band_followings')
+  //       });
+  //       $('#overlay').show();
+  //       that.$box.html(followedBandsView.render().$el)
+  //     },
+  //     error: function(data, other, yetother){
+  //       console.log('error');
+  //     },
+  //   });
+  // },
 
   facebook_lookup: function(){
     var that = this;

@@ -24,5 +24,9 @@ MP.Views.FollowedSongsDetailView = Backbone.View.extend({
       }
     });
 
+  },
+
+  remove_box: function(){
+    console.log('remove');
   }
 });

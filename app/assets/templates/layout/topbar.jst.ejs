@@ -3,10 +3,13 @@
   <nav id='user_nav'>
     <a href='/#/user/<%= window.current_user.id %>'>Your pins</a>
     <a href='/#/user/<%= window.current_user.id %>/likes'>Your likes</a>
-    <a href='/#/user/<%= window.current_user.id %>/followed_songs'>Your songs</a>
-    <a href='/#/user/<%= window.current_user.id %>/followed_bands'>Your bands</a>
-    <a href='/#/song/most_popular'>Most popular songs</a>
-    <a href='/#/band/most_popular'>Most popular bands</a>
+
+    <a id='followed_songs_link'>Your songs</a>
+    <a id='followed_bands_link'>Your bands</a>
+<!--
+    <a id='/#/song/most_popular'>Most popular songs</a>
+    <a id='/#/band/most_popular'>Most popular bands</a> -->
+
     <a href='/#/all'>All pins</a>
     <form action="/session" class="button_to" method="post">
         <input name="_method" type="hidden" value="delete">
