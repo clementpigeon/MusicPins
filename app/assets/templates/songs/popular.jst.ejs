@@ -1,11 +1,14 @@
-<h3>Most popular songs on Music Pins:</h3>
-<ul>
-<% _(songs.models).each(function(song){ %>
-  <li>
-    <a href='#/song/<%= song.escape('id') %>'>
-      <%= song.escape('title') %></a>
-       by <%= song.escape('band_name') %>
-     (<%= song.get('pins_count') %>  <%= song.get('pins_count') > 1 ? 'pins' : 'pin' %>)
-  </li>
-<% }) %>
-</ul>
+<div class='white_overlay'></div>
+<div class='box-container'>
+	<h3>Most popular songs on Music Pins:</h3>
+	<ul>
+	<% _(songs.models).each(function(song){ %>
+	  <li>
+	    <a href='#/song/<%= song.escape('id') %>'>
+	      <%= song.escape('title') %></a>
+	       by <%= song.escape('band_name') %>
+	     (<%= song.get('pins_count') %>  <%= song.get('pins_count') > 1 ? 'pins' : 'pin' %>)
+	  </li>
+	<% }) %>
+	</ul>
+</div>
