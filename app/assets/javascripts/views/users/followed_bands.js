@@ -10,7 +10,7 @@ MP.Views.FollowedBandsView = Backbone.View.extend({
   },
 
   events: {
-    'click a:not(.delete)' : 'removeView'
+    'click .white_overlay' : 'removeView'
   },
 
   render: function () {
