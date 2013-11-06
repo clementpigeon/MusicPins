@@ -10,6 +10,7 @@ MP.Views.FollowedSongsView = Backbone.View.extend({
   },
 
   events: {
+    'click .close' : 'removeView',
     'click .white_overlay' : 'removeView'
   },
 

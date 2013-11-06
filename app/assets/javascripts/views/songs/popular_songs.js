@@ -6,6 +6,7 @@ MP.Views.PopularSongsView = Backbone.View.extend({
 
   events: {
     'click a' : 'removeView',
+    'click .close' : 'removeView',
     'click .white_overlay' : 'removeView'
   },
 
