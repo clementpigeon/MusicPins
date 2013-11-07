@@ -124,6 +124,13 @@ h3 {
   text-align: center;
 }
 
+.FlickrLookupView, .FacebookLookupView, .InstagramLookupView {
+  border: 1px solid grey;
+  padding: 5px;
+  margin: 10px 0;
+  border-radius: 3px;
+}
+
 .add_pin {
   position: absolute;
   top: -2px;
@@ -487,8 +494,8 @@ select#song {
 }
 
 .photos{
-  height: 200px;
-  width: 10000px;
+/*  height: 200px;
+  width: 10000px;*/
 }
 
 .fb_photo_div {
