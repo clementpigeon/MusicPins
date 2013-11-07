@@ -28,6 +28,7 @@ MP.Views.InstagramPhotosView = Backbone.View.extend({
   returnImageLink: function(event){
     var imgLink = event.target.src;
     $('#pin_link').val(imgLink);
+    $('#pin_link').after('<span class="link_inserted">Image selected</span>');
     this.remove();
     this.lookupView.remove();
   }
