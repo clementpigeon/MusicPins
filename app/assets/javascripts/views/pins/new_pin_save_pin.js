@@ -162,7 +162,12 @@ MP.Views.NewPinSavePinView = Backbone.View.extend({
     if (this.instagramLookupView) this.instagramLookupView.remove();
     this.newPinFreebaseSongSelectView.remove();
     $('#overlay').hide();
-    MP.router.navigate("/user/" + window.current_user.id, {trigger: true});
+    if (Backbone.history.fragment == ("user/" + window.current_user.id)) {
+      MP.router.userFeed(window.current_user.id);
+    }
+    else {
+      MP.router.navigate("/user/" + window.current_user.id, {trigger: true});
+    }
   },
 
   facebookPhoto: function(){
