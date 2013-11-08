@@ -9,7 +9,7 @@ MP.Views.PinsIndexView = Backbone.View.extend({
 
     this.router = options['router'];
     this._pinCardViews = [];
-    this.current_page = 1;
+    // this.current_page = 1;
 
     this.$el.html(that.template());
     this.currentLayout = this.widthToLayout($('body').width());
@@ -139,8 +139,9 @@ MP.Views.PinsIndexView = Backbone.View.extend({
     if ($(window).scrollTop() > $(document).height() - $(window).height() - 50) {
       if (that.collection.page_number < that.collection.total_pages) {
         var data = this.router.data;
-        that.current_page += 1;
-        data['page'] = that.current_page;
+        data['page'] = that.collection.page_number + 1;
+        // that.current_page += 1;
+        // data['page'] = that.current_page;
         that.collection.fetch({
           data: data,
           success: function (res) {
